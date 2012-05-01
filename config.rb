@@ -3,9 +3,9 @@ project_type = :stand_alone
 
 # Publishing paths
 http_path = "/hudl/"
-http_images_path = "/hudl/images"
-http_fonts_path = "/hudl/fonts"
-css_dir = "public/hudl/stylesheets"
+http_images_path = "images"
+http_fonts_path = "fonts"
+css_dir = "public/stylesheets"
 
 # Local development paths
 sass_dir = "sass"
