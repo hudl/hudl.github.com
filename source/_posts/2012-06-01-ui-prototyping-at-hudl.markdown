@@ -11,7 +11,7 @@ At Hudl, we believe that you should design and prototype your app's user interfa
 
 When we work on a new product or feature, we try to figure out the fastest way to build an interface to answer one question about our approach to the interface: "Are we on the right track?"
 
-A lot of our ideas come from [Bill Buxton's great book about UX](http://www.amazon.com/Sketching-User-Experiences-Interactive-Technologies/dp/0123740371)--particularly as it relates to protoyping an experience. Bil says that your early sketches and prototypes should never be treated as _answers_ to the problem. 
+A lot of our ideas come from [Bill Buxton's great book about UX](http://www.amazon.com/Sketching-User-Experiences-Interactive-Technologies/dp/0123740371)--particularly as it relates to protoyping an experience. Bill says that your early sketches and prototypes should never be treated as _answers_ to the problem. 
 
 Instead, teams should think of them as _questions_ about the problem. 
 
@@ -28,7 +28,7 @@ Sketches usually don't qualify as a true prototype unless you tie them together 
 
 We upload photos of sketches from our phones to [Notable](http://notableapp.com). Once there, we organize them into ordered sets and groups to illustrate a workflow. 
 
-!(http://hudl-content.s3.amazonaws.com/cms/img/rawbits/notable-sequence.png)
+![Notable Sequence](http://hudl-content.s3.amazonaws.com/cms/img/rawbits/notable-sequence.png)
 
 The app is great because collaborators can comment inline on the sketch. Replies to those comments are threaded and everything stays clean.
 
@@ -55,9 +55,9 @@ My favorite kind of prototype is one that's closest to the real thing without be
 Then just throw your project folder on Dropbox, send a link out to co-workers or users, and let them click through your design in their own browser.
 
 Here's a prototype of a card-style interface for our Hudl Recruit prototype:
-[Try the prototype live, here.](http://dl.dropbox.com/u/8878990/Prototype/boards_combined/index.html)
+[Try the live prototype.](http://dl.dropbox.com/u/8878990/Prototype/boards_combined/index.html)
 
-!(http://hudl-content.s3.amazonaws.com/cms/img/rawbits/hudl-recruit-prototype.png)
+![Hudl Recruit Prototype](http://hudl-content.s3.amazonaws.com/cms/img/rawbits/hudl-recruit-prototype.png)
 
 I used to complain about not having _realistic_ dummy data for my designs. jQuery templates and a little JSON data structure make this easy:
 
