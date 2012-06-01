@@ -83,3 +83,7 @@ In this demonstration, you'll see me show transitions between states by adding a
 <iframe src="http://player.vimeo.com/video/11924309?portrait=0" width="500" height="375" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 
 The lesson I learned from this exercise is that no one likes 18 minute videos. If you're doing asynchronous design communication, you have to keep things short. The solution needs to have an emotional impact right out of the gate.
+
+Conclusion
+----------
+
