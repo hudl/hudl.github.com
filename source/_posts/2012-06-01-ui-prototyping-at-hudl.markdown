@@ -63,11 +63,11 @@ We were exploring the idea of using lots of drag, drop and hover states using th
 
 ![Hudl Recruit Prototype](http://hudl-content.s3.amazonaws.com/cms/img/rawbits/hudl-recruit-prototype.png)
 
-Sometimes it's a pain to get _realistic_ dummy data for your designs. It's a sin the web design world to use "Lorem ipsum" for all your copy. In the application world, it's just as bad to use _Person 1_, _Person 2_, etc., for a list of people. If you're treating content as filler you're ignoring the purpose of the app from the user's perspective! A real user cares a lot about those names.
+Sometimes it's a pain to get _realistic_ dummy data for your designs. It's a sin in the web design world to use "Lorem ipsum" for all your copy. In the application world, it's just as bad to use _Person 1_, _Person 2_, etc., for a list of people. If you're treating content as filler you're ignoring the purpose of the app from the user's perspective! A real user cares a lot about those names.
 
 jQuery templates and a little JSON data structure make this easy:
 
-{% gist 2854039 %}
+{% gist 3842460 %}
 
 That's an individual "card" object in the UI. We instantiate a bunch of them in a JavaScript loop before the page loads and cycle the data into each with a hand-written bit'o JSON:
 
