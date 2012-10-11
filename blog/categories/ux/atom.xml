@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: UX | The Raw Bits]]></title>
+  <link href="http://hudl.github.com/blog/categories/ux/atom.xml" rel="self"/>
+  <link href="http://hudl.github.com/"/>
+  <updated>2012-10-11T13:56:23-05:00</updated>
+  <id>http://hudl.github.com/</id>
+  <author>
+    <name><![CDATA[Hudl]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[UI Prototyping at Hudl]]></title>
+    <link href="http://hudl.github.com/blog/2012/06/01/ui-prototyping-at-hudl/"/>
+    <updated>2012-06-01T10:30:00-05:00</updated>
+    <id>http://hudl.github.com/blog/2012/06/01/ui-prototyping-at-hudl</id>
+    <content type="html"><![CDATA[<p>At Hudl, we believe that you should design and prototype your app's user interface before you invest heavily anywhere else. <strong>The UI is your whole product</strong> in your users' eyes. It has to be great.</p>
+
+<p>When we work on a new product or feature, we try to figure out the fastest way to build an interface to answer one question about our approach to the interface: "Are we on the right track?"</p>
+
+<p>A lot of our ideas come from <a href="http://www.amazon.com/Sketching-User-Experiences-Interactive-Technologies/dp/0123740371">Bill Buxton's great book about UX</a>--particularly as it relates to protoyping an experience. Bill says that your early sketches and prototypes should never be treated as <em>answers</em> to the problem.</p>
+
+<p>Instead, teams should think of them as <em>questions</em> <strong>about</strong> the problem.</p>
+
+<blockquote><p>Does this flow make sense? Are these steps in the right order? Can we make assumption X and skip this altogether? Should this object be bigger or smaller? Is the transition from A to B smooth or jarring?</p></blockquote>
+
+<p>You can't answer these questions by <em>talking about</em> a UI. You have to see it and tinker with it. Better yet, <strong>your users need to use it.</strong></p>
+
+<p>There are all kinds of ways you can prototype and get this kind of feedback from both your internal team and external users. Many of them don't include writing UI code. Here are a couple of ways our designers and developers "fake it before we make it."</p>
+
+<h2>Sketched Workflows on Notable</h2>
+
+<p>Sketches usually don't qualify as a true prototype unless you tie them together somehow.</p>
+
+<p>We upload photos of sketches from our phones to <a href="http://notableapp.com">Notable</a>. Once there, we organize them into ordered sets and groups to illustrate a workflow.</p>
+
+<p><img src="http://hudl-content.s3.amazonaws.com/cms/img/rawbits/notable-sequence.png" alt="Notable Sequence" /></p>
+
+<p>The app is great because collaborators can comment inline on the sketch. Replies to those comments are threaded so everything stays logically organized. Unlike an email or Basecamp thread, you avoid having to repeatedly refer to a specific location on a particular sketch.</p>
+
+<p>It's an async virtual whiteboard session for our product team. You can also share out public URLs to gather feedback from users.</p>
+
+<h2>Screen Recording on a "Dumb" UI</h2>
+
+<p>Even if your app can't <em>do anything yet</em>. You can communicate the intent with a a screen recording and bit of video editing in a tool of your choice.</p>
+
+<p>This approach works with static mockups as well as stubbed UI code.</p>
+
+<iframe src="http://player.vimeo.com/video/43261719?portrait=0" width="500" height="375" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p>Again, the whole idea is to <em>fake</em> the experience of whatever you're building so that others on your team can put themselves in the user's shoes. You can also show your customers the video directly and ask: "Are we on the right track?" If they aren't <strong>visibly or audibly excited</strong> by it, you're off the mark. When you solve a real problem, people get emotional. Prototypes are real enough that they draw emotion out. Your team has to read that and react in future iterations.</p>
+
+<iframe src="http://player.vimeo.com/video/43265446?portrait=0" width="500" height="394" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p>The voiceover helps provide emphasis on particularly important interactions. It can also remind stakeholders of the areas "we'll figure out later" so you can keep feedback moving down the path you want.</p>
+
+<h2>HTML + CSS + jQuery UI &amp; Templates + Dropbox</h2>
+
+<p>Our favorite kind of prototype is one that's closest to the real thing without being too cumbersome, slow or expensive. If you're fast with hand-coding HTML and CSS, there are tons of JavaScript libraries out there that'll help bring your app to life.</p>
+
+<p>Then you can put the project folder on Dropbox, send a link out to co-workers or users, and let them click through your design in their own browser.</p>
+
+<p>Here's a prototype of a fluid-width, card-style interface for our recent recruiting product:
+<a href="http://dl.dropbox.com/u/8878990/Prototype/boards_combined/index.html">Try the live prototype here.</a></p>
+
+<p>We were exploring the idea of using lots of drag, drop and hover states using the cards--stuff that's really hard to capture in a static mock.</p>
+
+<p><img src="http://hudl-content.s3.amazonaws.com/cms/img/rawbits/hudl-recruit-prototype.png" alt="Hudl Recruit Prototype" /></p>
+
+<p>Sometimes it's a pain to get <em>realistic</em> dummy data for your designs. It's a sin in the web design world to use "Lorem ipsum" for all your copy. In the application world, it's just as bad to use <em>Person 1</em>, <em>Person 2</em>, etc., for a list of people. If you're treating content as filler you're ignoring the purpose of the app from the user's perspective! A real user cares a lot about those names.</p>
+
+<p>jQuery templates and a little JSON data structure make this easy:</p>
+
+<p><div><script src='https://gist.github.com/3842460.js?file='></script>
+<noscript><pre><code>&lt;script id=&quot;cardTemplate&quot; type=&quot;text/x-jquery-tmpl&quot;&gt;
+    &lt;div class=&quot;card&quot;&gt;
+        &lt;div class=&quot;card_header&quot;&gt;
+            &lt;h3&gt;
+            	&lt;small&gt;${FirstName}&lt;/small&gt;
+            	&lt;strong&gt;${LastName}&lt;/strong&gt;
+            &lt;/h3&gt;
+            &lt;span class=&quot;meta&quot;&gt;
+            	{{if Thumbs}} &lt;span title=&quot;Watch ${FirstName}&amp;rsquo;s Rated Clips&quot; class=&quot;thumbs&quot;&gt;${Thumbs}&lt;/span&gt; {{/if}}
+            	&lt;span class=&quot;grad&quot;&gt;${Grad}&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card_content&quot;&gt;
+            &lt;img src=&quot;${ImageUri}&quot; alt=&quot;&quot;/&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card_footer&quot;&gt;
+            &lt;div class=&quot;card_footer_inner&quot;&gt;
+	        &lt;h4&gt;&lt;strong&gt;${Position}&lt;/strong&gt; &amp;middot; ${Height} ${Weight}&lt;/h4&gt;
+	        &lt;p&gt;${State} &amp;middot; ${School}&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;card_actions&quot;&gt;
+                &lt;a href=&quot;#&quot; class=&quot;send&quot;&gt;Send To&amp;hellip;&lt;/a&gt;
+                &lt;a href=&quot;#&quot; class=&quot;reject&quot;&gt;Reject for Now&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card_state&quot;&gt;
+            &lt;p&gt;Rejected for now. &lt;a href=&quot;#&quot; class=&quot;undo&quot;&gt;Undo&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/script&gt;</code></pre></noscript></div>
+</p>
+
+<p>That's an individual "card" object in the UI. We instantiate a bunch of them in a JavaScript loop before the page loads and cycle the data into each with a hand-written bit'o JSON:</p>
+
+<p><div><script src='https://gist.github.com/2854058.js?file='></script>
+<noscript><pre><code>// a little array is all you need
+
+var players = [
+    { FirstName: &quot;John&quot;, LastName: &quot;Smithers&quot;, School: &quot;Plano Heights&quot;, State: &quot;TX&quot;, ImageUri: &quot;http://dl.dropbox.com/u/8878990/Prototype/boards_combined/img/face.jpg&quot;, Position: &quot;QB&quot;, Jersey: &quot;23&quot;, Height: &quot;6'3''&quot;, Weight: &quot;225 lbs&quot;, Grad: &quot;2013&quot;, Thumbs: &quot;6&quot;},
+    { FirstName: &quot;Kyle&quot;, LastName: &quot;Karthauser&quot;, School: &quot;Plano Heights&quot;, State: &quot;TX&quot;, ImageUri: &quot;http://dl.dropbox.com/u/8878990/Prototype/boards_combined/img/unknownUser148.png&quot;, Position: &quot;K&quot;, Jersey: &quot;23&quot;, Height: &quot;6'3''&quot;, Weight: &quot;225 lbs&quot;, Grad: &quot;2013&quot;},
+    { FirstName: &quot;Albert&quot;, LastName: &quot;Anderson&quot;, School: &quot;Southlake Carroll&quot;, State: &quot;AL&quot;, ImageUri: &quot;http://dl.dropbox.com/u/8878990/Prototype/boards_combined/img/face2.jpg&quot;, Position: &quot;WR&quot;, Jersey: &quot;23&quot;, Height: &quot;6'3''&quot;, Weight: &quot;225 lbs&quot;, Grad: &quot;2013&quot;, Thumbs: &quot;6&quot;},
+    { FirstName: &quot;Bobby&quot;, LastName: &quot;Bingham&quot;, School: &quot;Plano Heights&quot;, State: &quot;TX&quot;, ImageUri: &quot;http://dl.dropbox.com/u/8878990/Prototype/boards_combined/img/face3.jpg&quot;, Position: &quot;RB&quot;, Jersey: &quot;23&quot;, Height: &quot;6'3''&quot;, Weight: &quot;205&quot;, Grad: &quot;2013&quot;, Thumbs: &quot;11&quot;},
+    { FirstName: &quot;Carl&quot;, LastName: &quot;Contre&quot;, School: &quot;Plano Heights&quot;, State: &quot;TX&quot;, ImageUri: &quot;http://dl.dropbox.com/u/8878990/Prototype/boards_combined/img/face4.jpg&quot;, Position: &quot;SS&quot;, Jersey: &quot;23&quot;, Height: &quot;6'3''&quot;, Weight: &quot;225 lbs&quot;, Grad: &quot;2013&quot;, Thumbs: &quot;6&quot;},
+    { FirstName: &quot;Harry&quot;, LastName: &quot;Henderson&quot;, School: &quot;Bishop Gorman&quot;, State: &quot;TX&quot;, ImageUri: &quot;http://dl.dropbox.com/u/8878990/Prototype/boards_combined/img/unknownUser148.png&quot;, Position: &quot;T&quot;, Jersey: &quot;23&quot;, Height: &quot;6'3''&quot;, Weight: &quot;205&quot;, Grad: &quot;2013&quot;, Thumbs: &quot;6&quot;},
+    { FirstName: &quot;David&quot;, LastName: &quot;Duane&quot;, School: &quot;Bishop Gorman&quot;, State: &quot;TX&quot;, ImageUri: &quot;http://dl.dropbox.com/u/8878990/Prototype/boards_combined/img/face5.jpg&quot;, Position: &quot;LB&quot;, Jersey: &quot;23&quot;, Height: &quot;6'3''&quot;, Weight: &quot;225 lbs&quot;, Grad: &quot;2013&quot;},
+    { FirstName: &quot;Edward&quot;, LastName: &quot;Edgerton&quot;, School: &quot;Plano Heights&quot;, State: &quot;TX&quot;, ImageUri: &quot;http://dl.dropbox.com/u/8878990/Prototype/boards_combined/img/face6.jpg&quot;, Position: &quot;G&quot;, Jersey: &quot;23&quot;, Height: &quot;6'3''&quot;, Weight: &quot;225 lbs&quot;, Grad: &quot;2013&quot;}
+];</code></pre></noscript></div>
+</p>
+
+<p>Using a <em>little bit</em> of code as a designer is necessary. This method is quick and dirty--much of it isn't in the production version of this app. But using more realistic data lets you and potential users get a feel for how this thing might behave in the real world.</p>
+
+<h2>Paper Prototype</h2>
+
+<p>We love to sketch. The engineer in us also also loves to create reusable components. That's why making a prototype with paper and sharpie is a wonderful exercise.</p>
+
+<p>Instead of repeatedly drawing the same "shell" for your screens over and over again, you can sketch small pieces of your UI, cut them out, and compose them to communicate an interaction.</p>
+
+<p>In this demo, you'll see different states shown by adding and removing pieces of paper on the canvas.</p>
+
+<iframe src="http://player.vimeo.com/video/11924309?portrait=0" width="500" height="375" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p>The lesson we learned from this exercise is that no one likes 18 minute videos. If you're doing asynchronous design communication, <strong>you have to keep things short</strong>. The solution needs to have an emotional impact right out of the gate.</p>
+
+<h2>Conclusion</h2>
+
+<p>We've shown you a couple different ways we've prototyped interfaces at Hudl. We don't do it the same way every time but we always make them with the same idea in mind.</p>
+
+<blockquote><p>What's the fastest way to build something that answers questions we have or tests assumptions we've made about our users and their workflow?</p></blockquote>
+
+<p>The code quality, technology, and tools don't matter at all compared to that.</p>
+]]></content>
+  </entry>
+  
+</feed>

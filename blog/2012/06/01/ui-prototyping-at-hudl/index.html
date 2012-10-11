@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>The Raw Bits</title>
+  <title>UI Prototyping at Hudl - The Raw Bits</title>
   <meta name="author" content="Hudl">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hudl.github.com">
+  <link rel="canonical" href="http://hudl.github.com/blog/2012/06/01/ui-prototyping-at-hudl">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -62,15 +62,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/06/01/ui-prototyping-at-hudl/">UI Prototyping at Hudl</a></h1>
+      <h1 class="entry-title">UI Prototyping at Hudl</h1>
     
     
       <p class="meta">
@@ -93,7 +90,7 @@
   </header>
 
 
-  <div class="entry-content"><p>At Hudl, we believe that you should design and prototype your app&#8217;s user interface before you invest heavily anywhere else. <strong>The UI is your whole product</strong> in your users&#8217; eyes. It has to be great.</p>
+<div class="entry-content"><p>At Hudl, we believe that you should design and prototype your app&#8217;s user interface before you invest heavily anywhere else. <strong>The UI is your whole product</strong> in your users&#8217; eyes. It has to be great.</p>
 
 <p>When we work on a new product or feature, we try to figure out the fastest way to build an interface to answer one question about our approach to the interface: &#8220;Are we on the right track?&#8221;</p>
 
@@ -225,22 +222,16 @@ var players = [
 
 <p>The code quality, technology, and tools don&#8217;t matter at all compared to that.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/03/making-nsarray-more-functional/">Making NSArray More Functional</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">KyleM</span></span>
+
+      
 
 
 
@@ -252,57 +243,38 @@ var players = [
   
 
 
-<time datetime="2012-04-03T13:24:00-05:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2012</time>
-        
-      </p>
+<time datetime="2012-06-01T10:30:00-05:00" pubdate data-updated="true">Jun 1<span>st</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ux/'>UX</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://hudl.github.com/blog/2012/06/01/ui-prototyping-at-hudl/" data-via="" data-counturl="http://hudl.github.com/blog/2012/06/01/ui-prototyping-at-hudl/" >Tweet</a>
+  
+  
+  
+</div>
 
-
-  <div class="entry-content"><p>Having spent a lot of time developing in C#, Ruby, and Javascript, I&#8217;ve had the pleasure of using frameworks like Linq, ActiveRecord, and Underscore.js. Each one has it&#8217;s own set of similar functional methods that make working with collections a lot more fun. Objective-C on the other hand has beauties like</p>
-
-<div><script src='https://gist.github.com/2295259.js?file=existing.h'></script>
-<noscript><pre><code>- (void)enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)block;
-- (NSUInteger)indexOfObjectPassingTest:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;</code></pre></noscript></div>
-
-
-<p>and is missing pretty much everything else.</p>
-
-<p>Rather than haphazardly cram together a bunch of built-in <code>NSArray</code> methods every time we wanted to manipulate an array, we wrote our own methods. Some of them may be fairly naive implementations, but they get the job done and the names are so much easier to remember.</p>
-
-<p>The good news is Objective-C supports Categories, so adding the methods to <code>NSArray</code> was a breeze. Checkout the <a href="https://github.com/hudl/NSArray-FunctionalHelper">Github repository</a> to see all the methods and add more of your own.</p>
-
-<h2>Examples</h2>
-
-<div><script src='https://gist.github.com/2295259.js?file=examples.m'></script>
-<noscript><pre><code>// A new array that only contains valid objects
-NSArray *validObjects = [allObjects where:^(id obj) { return [obj isValid]; }];
-
-// A new array with the first five valid objects
-NSArray *firstFive = [validObjects take:5];
-
-// A new array with valid objects 6-10
-NSArray *nextFive = [[validObjects skip:5] take:5];
-
-// A new array containing only the objectIDs of each valid object
-NSArray *objectIds = [validObjects map:^(id obj) { return [obj objectID]; }];
-
-// A dictionary that has objectIDs for keys and the original objects as values
-NSDictionary *objectIdsToObjects = [validObjects toDictionary:^(id obj) { return [obj objectID]; }];</code></pre></noscript></div>
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/04/03/making-nsarray-more-functional/" title="Previous Post: Making NSArray More Functional">&laquo; Making NSArray More Functional</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -327,6 +299,7 @@ NSDictionary *objectIdsToObjects = [validObjects toDictionary:^(id obj) { return
 
   
 </aside>
+
 
     </div>
   </div>

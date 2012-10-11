@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Making NSArray More Functional - The Raw Bits</title>
+  <meta name="author" content="Hudl">
+
+  
+  <meta name="description" content="Having spent a lot of time developing in C#, Ruby, and Javascript, I&#8217;ve had the pleasure of using frameworks like Linq, ActiveRecord, and &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hudl.github.com/blog/2012/04/03/making-nsarray-more-functional">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="The Raw Bits" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">The Raw Bits</a></h1>
+  
+    <h2>@hudl #realtalk</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:hudl.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Making NSArray More Functional</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-03T13:24:00-05:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Having spent a lot of time developing in C#, Ruby, and Javascript, I&#8217;ve had the pleasure of using frameworks like Linq, ActiveRecord, and Underscore.js. Each one has it&#8217;s own set of similar functional methods that make working with collections a lot more fun. Objective-C on the other hand has beauties like</p>
+
+<div><script src='https://gist.github.com/2295259.js?file=existing.h'></script>
+<noscript><pre><code>- (void)enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)block;
+- (NSUInteger)indexOfObjectPassingTest:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;</code></pre></noscript></div>
+
+
+<p>and is missing pretty much everything else.</p>
+
+<p>Rather than haphazardly cram together a bunch of built-in <code>NSArray</code> methods every time we wanted to manipulate an array, we wrote our own methods. Some of them may be fairly naive implementations, but they get the job done and the names are so much easier to remember.</p>
+
+<p>The good news is Objective-C supports Categories, so adding the methods to <code>NSArray</code> was a breeze. Checkout the <a href="https://github.com/hudl/NSArray-FunctionalHelper">Github repository</a> to see all the methods and add more of your own.</p>
+
+<h2>Examples</h2>
+
+<div><script src='https://gist.github.com/2295259.js?file=examples.m'></script>
+<noscript><pre><code>// A new array that only contains valid objects
+NSArray *validObjects = [allObjects where:^(id obj) { return [obj isValid]; }];
+
+// A new array with the first five valid objects
+NSArray *firstFive = [validObjects take:5];
+
+// A new array with valid objects 6-10
+NSArray *nextFive = [[validObjects skip:5] take:5];
+
+// A new array containing only the objectIDs of each valid object
+NSArray *objectIds = [validObjects map:^(id obj) { return [obj objectID]; }];
+
+// A dictionary that has objectIDs for keys and the original objects as values
+NSDictionary *objectIdsToObjects = [validObjects toDictionary:^(id obj) { return [obj objectID]; }];</code></pre></noscript></div>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ErikP</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-03T13:24:00-05:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/objective-c/'>Objective-C</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://hudl.github.com/blog/2012/04/03/making-nsarray-more-functional/" data-via="" data-counturl="http://hudl.github.com/blog/2012/04/03/making-nsarray-more-functional/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/06/01/ui-prototyping-at-hudl/" title="Next Post: UI Prototyping at Hudl">UI Prototyping at Hudl &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/06/01/ui-prototyping-at-hudl/">UI Prototyping at Hudl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/03/making-nsarray-more-functional/">Making NSArray More Functional</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Hudl -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Objective-C | The Raw Bits]]></title>
+  <link href="http://hudl.github.com/blog/categories/objective-c/atom.xml" rel="self"/>
+  <link href="http://hudl.github.com/"/>
+  <updated>2012-10-11T13:56:23-05:00</updated>
+  <id>http://hudl.github.com/</id>
+  <author>
+    <name><![CDATA[Hudl]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Making NSArray More Functional]]></title>
+    <link href="http://hudl.github.com/blog/2012/04/03/making-nsarray-more-functional/"/>
+    <updated>2012-04-03T13:24:00-05:00</updated>
+    <id>http://hudl.github.com/blog/2012/04/03/making-nsarray-more-functional</id>
+    <content type="html"><![CDATA[<p>Having spent a lot of time developing in C#, Ruby, and Javascript, I've had the pleasure of using frameworks like Linq, ActiveRecord, and Underscore.js. Each one has it's own set of similar functional methods that make working with collections a lot more fun. Objective-C on the other hand has beauties like
+<div><script src='https://gist.github.com/2295259.js?file=existing.h'></script>
+<noscript><pre><code>- (void)enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)block;
+- (NSUInteger)indexOfObjectPassingTest:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;</code></pre></noscript></div>
+
+and is missing pretty much everything else.</p>
+
+<p>Rather than haphazardly cram together a bunch of built-in <code>NSArray</code> methods every time we wanted to manipulate an array, we wrote our own methods. Some of them may be fairly naive implementations, but they get the job done and the names are so much easier to remember.</p>
+
+<p>The good news is Objective-C supports Categories, so adding the methods to <code>NSArray</code> was a breeze. Checkout the <a href="https://github.com/hudl/NSArray-FunctionalHelper">Github repository</a> to see all the methods and add more of your own.</p>
+
+<h2>Examples</h2>
+
+<p><div><script src='https://gist.github.com/2295259.js?file=examples.m'></script>
+<noscript><pre><code>// A new array that only contains valid objects
+NSArray *validObjects = [allObjects where:^(id obj) { return [obj isValid]; }];
+
+// A new array with the first five valid objects
+NSArray *firstFive = [validObjects take:5];
+
+// A new array with valid objects 6-10
+NSArray *nextFive = [[validObjects skip:5] take:5];
+
+// A new array containing only the objectIDs of each valid object
+NSArray *objectIds = [validObjects map:^(id obj) { return [obj objectID]; }];
+
+// A dictionary that has objectIDs for keys and the original objects as values
+NSDictionary *objectIdsToObjects = [validObjects toDictionary:^(id obj) { return [obj objectID]; }];</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
+  
+</feed>

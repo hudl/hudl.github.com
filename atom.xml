@@ -1,99 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>The Raw Bits</title>
-  <meta name="author" content="Hudl">
-
-  
-  <meta name="description" content="At Hudl, we believe that you should design and prototype your app&#8217;s user interface before you invest heavily anywhere else. The UI is your &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://hudl.github.com">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="The Raw Bits" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">The Raw Bits</a></h1>
-  
-    <h2>@hudl #realtalk</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:hudl.github.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[The Raw Bits]]></title>
+  <link href="http://hudl.github.com/atom.xml" rel="self"/>
+  <link href="http://hudl.github.com/"/>
+  <updated>2012-10-11T13:56:23-05:00</updated>
+  <id>http://hudl.github.com/</id>
+  <author>
+    <name><![CDATA[Hudl]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2012/06/01/ui-prototyping-at-hudl/">UI Prototyping at Hudl</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2012-06-01T10:30:00-05:00" pubdate data-updated="true">Jun 1<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>At Hudl, we believe that you should design and prototype your app&#8217;s user interface before you invest heavily anywhere else. <strong>The UI is your whole product</strong> in your users&#8217; eyes. It has to be great.</p>
+  <entry>
+    <title type="html"><![CDATA[UI Prototyping at Hudl]]></title>
+    <link href="http://hudl.github.com/blog/2012/06/01/ui-prototyping-at-hudl/"/>
+    <updated>2012-06-01T10:30:00-05:00</updated>
+    <id>http://hudl.github.com/blog/2012/06/01/ui-prototyping-at-hudl</id>
+    <content type="html"><![CDATA[<p>At Hudl, we believe that you should design and prototype your app&#8217;s user interface before you invest heavily anywhere else. <strong>The UI is your whole product</strong> in your users&#8217; eyes. It has to be great.</p>
 
 <p>When we work on a new product or feature, we try to figure out the fastest way to build an interface to answer one question about our approach to the interface: &#8220;Are we on the right track?&#8221;</p>
 
@@ -224,42 +149,15 @@ var players = [
 <blockquote><p>What&#8217;s the fastest way to build something that answers questions we have or tests assumptions we&#8217;ve made about our users and their workflow?</p></blockquote>
 
 <p>The code quality, technology, and tools don&#8217;t matter at all compared to that.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/03/making-nsarray-more-functional/">Making NSArray More Functional</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-03T13:24:00-05:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Having spent a lot of time developing in C#, Ruby, and Javascript, I&#8217;ve had the pleasure of using frameworks like Linq, ActiveRecord, and Underscore.js. Each one has it&#8217;s own set of similar functional methods that make working with collections a lot more fun. Objective-C on the other hand has beauties like</p>
+  <entry>
+    <title type="html"><![CDATA[Making NSArray More Functional]]></title>
+    <link href="http://hudl.github.com/blog/2012/04/03/making-nsarray-more-functional/"/>
+    <updated>2012-04-03T13:24:00-05:00</updated>
+    <id>http://hudl.github.com/blog/2012/04/03/making-nsarray-more-functional</id>
+    <content type="html"><![CDATA[<p>Having spent a lot of time developing in C#, Ruby, and Javascript, I&#8217;ve had the pleasure of using frameworks like Linq, ActiveRecord, and Underscore.js. Each one has it&#8217;s own set of similar functional methods that make working with collections a lot more fun. Objective-C on the other hand has beauties like</p>
 
 <div><script src='https://gist.github.com/2295259.js?file=existing.h'></script>
 <noscript><pre><code>- (void)enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)block;
@@ -290,73 +188,7 @@ NSArray *objectIds = [validObjects map:^(id obj) { return [obj objectID]; }];
 // A dictionary that has objectIDs for keys and the original objects as values
 NSDictionary *objectIdsToObjects = [validObjects toDictionary:^(id obj) { return [obj objectID]; }];</code></pre></noscript></div>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2012/06/01/ui-prototyping-at-hudl/">UI Prototyping at Hudl</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/04/03/making-nsarray-more-functional/">Making NSArray More Functional</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Hudl -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>
