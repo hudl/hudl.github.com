@@ -4,7 +4,7 @@
   <title><![CDATA[The Raw Bits]]></title>
   <link href="http://hudl.github.com/atom.xml" rel="self"/>
   <link href="http://hudl.github.com/"/>
-  <updated>2012-10-18T18:25:52-05:00</updated>
+  <updated>2012-11-08T15:19:12-06:00</updated>
   <id>http://hudl.github.com/</id>
   <author>
     <name><![CDATA[Hudl]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Synchronous AFNetworking]]></title>
+    <link href="http://hudl.github.com/blog/2012/11/08/synchronous-afnetworking/"/>
+    <updated>2012-11-08T13:42:00-06:00</updated>
+    <id>http://hudl.github.com/blog/2012/11/08/synchronous-afnetworking</id>
+    <content type="html"><![CDATA[<p>Almost everyone is using <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> these days, but one issue I&#8217;ve ran in to a couple times is the lack of synchronous methods.</p>
+
+<p>A little searching around the nets didn&#8217;t produce much except the <a href="http://stackoverflow.com/questions/7969865/can-afnetworking-return-data-synchronously-inside-a-block">&#8220;Don&#8217;t make synchronous requests&#8221;</a> suggestion. In general, that&#8217;s the best answer; handling queues/threads/operations/etc becomes tricky pretty quickly. But what about those times when you know synchronous is the right way to go?</p>
+
+<p>First off, spend a little time in the <a href="https://developer.apple.com/library/ios/#documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html">GCD docs</a>. Playing with these methods can lead to deadlocks if you aren&#8217;t careful. After that, check out the method below. It has nearly the same signature as <code>- [AFHttpClient postPath:parameters:success:failure:]</code>, but instead of success and failure callbacks it <em>returns</em> the result. In my case, it returns <code>nil</code> for a failure, the resulting object, or &#8220;Great Success&#8221; if the request completed successfully but without a response body.</p>
+
+<div><script src='https://gist.github.com/4041156.js?file='></script>
+<noscript><pre><code>- (id)postSyncToPath:(NSString *)path parameters:(NSDictionary *)parameters
+{
+    __block id result = nil;
+    dispatch_group_t group = dispatch_group_create();
+
+    dispatch_group_enter(group);
+
+    [super postPath:path parameters:parameters success:^(AFHTTPRequestOperation *op, id resultObject)
+     {
+         // executed on the main thread. make it quick!
+         if (resultObject != nil)
+         {
+             result = resultObject;
+         }
+         else
+         {
+             result = @&quot;Great Success!&quot;;
+         }
+         dispatch_group_leave(group);
+
+     } failure:^(AFHTTPRequestOperation *op, NSError *err)
+     {
+         NSLog(&quot;postSyncToPath Error: %@&quot;, error);
+
+         dispatch_group_leave(group);
+     }];
+
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+
+    return result;
+}</code></pre></noscript></div>
+
+
+<p><strong>Be sure to call this method on a queue other than the main queue.</strong> I <em>implore</em> you. The calling queue will be blocked until the network request returns. If you do this on the main queue, you&#8217;ll have some very unhappy users. Note the dispatch block below is on a low priority queue.</p>
+
+<div><script src='https://gist.github.com/4041333.js?file='></script>
+<noscript><pre><code>dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^
+{
+    NSArray *posts = @[
+        @{ @&quot;title&quot;: @&quot;Making AFNetworking Synchronous&quot; },
+        @{ @&quot;title&quot;: @&quot;Preparing for Season: Load Testing&quot; },
+        @{ @&quot;title&quot;: @&quot;UI Prototyping at Hudl&quot; }
+    ];
+    NSString *path = @&quot;/posts&quot;;
+    
+    for (NSDictionary *post in posts)
+    {
+        NSDictionary *result = [afHttpClient postSyncToPath:path parameters:post];
+        if (result != nil)
+        {
+            NSLog(@&quot;Result: %@&quot;, result);
+        }
+    }
+}</code></pre></noscript></div>
+
+
+<p>That&#8217;s it for quick and dirty synchronous AFNetworking. It&#8217;ll turn your nasty, callback spaghetti code in to pretty, ordered procedural code.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Preparing for Season: Load Testing]]></title>

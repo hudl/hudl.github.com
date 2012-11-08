@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Synchronous AFNetworking - The Raw Bits</title>
+  <meta name="author" content="Hudl">
+
+  
+  <meta name="description" content="Almost everyone is using AFNetworking these days, but one issue I&#8217;ve ran in to a couple times is the lack of synchronous methods. A little &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hudl.github.com/blog/2012/11/08/synchronous-afnetworking">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="The Raw Bits" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">The Raw Bits</a></h1>
+  
+    <h2>@hudl #realtalk</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:hudl.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Synchronous AFNetworking</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-08T13:42:00-06:00" pubdate data-updated="true">Nov 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Almost everyone is using <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> these days, but one issue I&#8217;ve ran in to a couple times is the lack of synchronous methods.</p>
+
+<p>A little searching around the nets didn&#8217;t produce much except the <a href="http://stackoverflow.com/questions/7969865/can-afnetworking-return-data-synchronously-inside-a-block">&#8220;Don&#8217;t make synchronous requests&#8221;</a> suggestion. In general, that&#8217;s the best answer; handling queues/threads/operations/etc becomes tricky pretty quickly. But what about those times when you know synchronous is the right way to go?</p>
+
+<p>First off, spend a little time in the <a href="https://developer.apple.com/library/ios/#documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html">GCD docs</a>. Playing with these methods can lead to deadlocks if you aren&#8217;t careful. After that, check out the method below. It has nearly the same signature as <code>- [AFHttpClient postPath:parameters:success:failure:]</code>, but instead of success and failure callbacks it <em>returns</em> the result. In my case, it returns <code>nil</code> for a failure, the resulting object, or &#8220;Great Success&#8221; if the request completed successfully but without a response body.</p>
+
+<div><script src='https://gist.github.com/4041156.js?file='></script>
+<noscript><pre><code>- (id)postSyncToPath:(NSString *)path parameters:(NSDictionary *)parameters
+{
+    __block id result = nil;
+    dispatch_group_t group = dispatch_group_create();
+
+    dispatch_group_enter(group);
+
+    [super postPath:path parameters:parameters success:^(AFHTTPRequestOperation *op, id resultObject)
+     {
+         // executed on the main thread. make it quick!
+         if (resultObject != nil)
+         {
+             result = resultObject;
+         }
+         else
+         {
+             result = @&quot;Great Success!&quot;;
+         }
+         dispatch_group_leave(group);
+
+     } failure:^(AFHTTPRequestOperation *op, NSError *err)
+     {
+         NSLog(&quot;postSyncToPath Error: %@&quot;, error);
+
+         dispatch_group_leave(group);
+     }];
+
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+
+    return result;
+}</code></pre></noscript></div>
+
+
+<p><strong>Be sure to call this method on a queue other than the main queue.</strong> I <em>implore</em> you. The calling queue will be blocked until the network request returns. If you do this on the main queue, you&#8217;ll have some very unhappy users. Note the dispatch block below is on a low priority queue.</p>
+
+<div><script src='https://gist.github.com/4041333.js?file='></script>
+<noscript><pre><code>dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^
+{
+    NSArray *posts = @[
+        @{ @&quot;title&quot;: @&quot;Making AFNetworking Synchronous&quot; },
+        @{ @&quot;title&quot;: @&quot;Preparing for Season: Load Testing&quot; },
+        @{ @&quot;title&quot;: @&quot;UI Prototyping at Hudl&quot; }
+    ];
+    NSString *path = @&quot;/posts&quot;;
+    
+    for (NSDictionary *post in posts)
+    {
+        NSDictionary *result = [afHttpClient postSyncToPath:path parameters:post];
+        if (result != nil)
+        {
+            NSLog(@&quot;Result: %@&quot;, result);
+        }
+    }
+}</code></pre></noscript></div>
+
+
+<p>That&#8217;s it for quick and dirty synchronous AFNetworking. It&#8217;ll turn your nasty, callback spaghetti code in to pretty, ordered procedural code.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ErikP</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-08T13:42:00-06:00" pubdate data-updated="true">Nov 8<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/objective-c/'>Objective-C</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://hudl.github.com/blog/2012/11/08/synchronous-afnetworking/" data-via="" data-counturl="http://hudl.github.com/blog/2012/11/08/synchronous-afnetworking/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/05/load-testing/" title="Previous Post: Preparing for Season: Load Testing">&laquo; Preparing for Season: Load Testing</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/11/08/synchronous-afnetworking/">Synchronous AFNetworking</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/05/load-testing/">Preparing for Season: Load Testing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/01/ui-prototyping-at-hudl/">UI Prototyping at Hudl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/03/making-nsarray-more-functional/">Making NSArray More Functional</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Hudl -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
