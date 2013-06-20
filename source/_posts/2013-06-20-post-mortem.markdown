@@ -13,7 +13,7 @@ Summary
 ---
 One of our availability zones in AWS (us-east-1) experienced DNS resolution problems, meaning some services within our infrastructure could not talk to other services. We removed traffic from the affected services and monitored the situation. Amazon resolved the issue and we reintroduced traffic to those services.
 
-**Time to Discovery** (time from incident origination to our identification of the cause): 11 minutes
+**Time to Discovery** (time from incident origination to our identification of the cause): 11 minutes  
 **Time to Resolve** (time from identification of the cause to resolution of incident from user perspective): 5 minutes
 
 Technical Details
