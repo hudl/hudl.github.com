@@ -9,7 +9,7 @@
   <meta name="author" content="Hudl">
 
   
-  <meta name="description" content="Almost everyone is using AFNetworking these days, but one issue I&#8217;ve ran in to a couple times is the lack of synchronous methods. A little &hellip;">
+  <meta name="description" content="We think there are members of the tech community who would appreciate getting our perspective on operational incidents at Hudl. In the spirit of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +64,67 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/20/post-mortem/">Post-Mortem for Internal Incident on June 13</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-20T00:00:00-05:00" pubdate data-updated="true">Jun 20<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>We think there are members of the tech community who would appreciate getting our perspective on operational incidents at Hudl. In the spirit of sharing so we can all become better at resolving issues, we present our first public post-mortem.</em></p>
+
+<h2>Summary</h2>
+
+<p>One of our availability zones in AWS (us-east-1) experienced DNS resolution problems, meaning some services within our infrastructure could not talk to other services. We removed traffic from the affected services and monitored the situation. Amazon resolved the issue and we reintroduced traffic to those services.</p>
+
+<p><strong>Time to Discovery</strong> (time from incident origination to our identification of the cause): 11 minutes
+<strong>Time to Resolve</strong> (time from identification of the cause to remediation of the incident): 5 minutes</p>
+
+<h2>Technical Details</h2>
+
+<p>Around 17:09 CDT on June 13, some of our servers started logging errors when trying to contact our cache servers. At about 17:15, we were preparing a production deployment when we noticed these errors thanks to a Splunk dashboard. We took note that the errors were coming from one specific availability zone and verified all cache servers were available and responsive. We then accessed two of the servers that were reporting errors and attempted to ping other servers first by DNS, which failed immediately, and then directly by IP, which succeeded. From this, we wagered there was a DNS issue internal to AWS. We watched Twitter for reports to confirm this hypothesis, which happened some minutes later.</p>
+
+<p>About 17:20, we made the call to remove web traffic from these servers using Amazon&#8217;s Elastic Load Balancer. Even after a couple of minutes, the change did not appear to have taken effect, so we removed each server individually. By 17:25, none of the affected servers were receiving traffic anymore, but they continued to report errors. Over the next twenty minutes, we continued to research the situation, concluding that the driver for the cache servers was continuing to retry the connections and generating the errors, even without web traffic.</p>
+
+<p>At 17:42, AWS acknowledged the problem, and later reported that it was resolved by 17:39. Errors subsided as the affected servers were once again able to contact the cache servers. Around 17:50, we re-enabled traffic and continued to monitor the servers until we were satisfied the situation was resolved.</p>
+
+<p>We have no reason to believe our users were impacted by this event.</p>
+
+<h2>What We Learned</h2>
+
+<p>When we conduct DevOps post-mortems, we want to identify ways to improve our infrastructure to be more fault tolerant, our knowledge to quickly and accurately discover the causes, and our alerts to be fast and with a high signal to noise ratio. That said, we&#8217;re still careful about what action items we take away. We want to be sure any changes we make will be truly valuable.</p>
+
+<p>The low-impact nature of this incident means we will consider improvements to our fault tolerance in the medium-to-long term rather than right away. One potential improvement we will be looking into is the automatic removal of traffic from servers that are assessed to be unhealthy.</p>
+
+<p>In this case, the primary action item involved creating new alerts. We caught this incident by a happy accident&#8211;that someone happened to be looking in the right place at the right time. As a result, we introduced two new Splunk alerts that will bring to our attention similar situations so that our DevOps team can take action right away.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -618,6 +679,10 @@ NSDictionary *objectIdsToObjects = [validObjects toDictionary:^(id obj) { return
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/06/20/post-mortem/">Post-Mortem for Internal Incident on June 13</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/11/08/synchronous-afnetworking/">Synchronous AFNetworking</a>
       </li>
     
@@ -647,7 +712,7 @@ NSDictionary *objectIdsToObjects = [validObjects toDictionary:^(id obj) { return
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Hudl -
+  Copyright &copy; 2013 - Hudl -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
