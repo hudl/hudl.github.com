@@ -1,0 +1,18 @@
+/* Utility classes */
+
+.u-dark-color {
+    color: #232a31;
+}
+.u-medium-dark-color {
+    color: #38434f;
+}
+.u-light-dark-color {
+    color: #4e5d6c;
+}
+.u-gray-light-color {
+    color: #f5f5f5;
+}
+
+.u-dark-background {
+    background-color: #232a31;
+}
