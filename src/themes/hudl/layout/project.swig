@@ -2,7 +2,7 @@
 
 {% block title %}{{ page.title }}{% endblock %}
 
-<h2>Post</h2>
+<h2>Project</h2>
 
 {% block content %}
 {{ page.content }}

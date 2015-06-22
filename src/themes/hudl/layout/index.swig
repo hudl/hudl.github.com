@@ -8,8 +8,8 @@
 {% endblock %}
 
 {% block content %}
-<p>This is just an awesome page.</p>
+<p>This is just an awesome index page.</p>
 {% for post in page.posts %}
-  <a href="{{ url_for(post.path) }}">{{post.title}}</a>
+  <a href="{{ url_for(post.path) }}">{{post.name}}</a>
 {% endfor %}
 {% endblock %}
