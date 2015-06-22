@@ -16,3 +16,10 @@
 .u-dark-background {
     background-color: #232a31;
 }
+
+
+.main-wrap {
+    width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+}
