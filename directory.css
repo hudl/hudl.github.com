@@ -21,11 +21,20 @@
     background-color: #232a31;
 }
 
+/* Font support */
+.wf-loading, .wf-inactive {
+  opacity: 0;
+}
+.wf-active {
+  opacity: 1;
+}
+
 
 .main-wrap {
     width: 27rem;
     margin-left: auto;
     margin-right: auto;
+    font-family: 'Trade Gothic';
 }
 
 .header__title {
