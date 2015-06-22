@@ -1,0 +1,9 @@
+{
+  "name": "hudl-oss",
+  "version": "0.0.0",
+  "homepage": "https://github.com/hudl/hudl.github.com",
+  "authors": [
+    "chris.roberson@hudl.com"
+  ],
+  "license": "MIT"
+}
