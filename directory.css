@@ -40,6 +40,14 @@
     margin-right: auto;
 }
 
+/* Font support */
+.wf-loading, .wf-inactive {
+  opacity: 0;
+}
+.wf-active {
+  opacity: 1;
+}
+
 
 .main-wrap {
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
