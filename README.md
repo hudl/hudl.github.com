@@ -21,7 +21,9 @@ Run `npm run compile-css` to do a single compile. To watch for changes and compi
 Run `npm run compile-js` to do a single compile. To watch for changes and compile on the fly, simply follow the instructions to start the local web server.
 
 ### Adding CSS
-Simply add a new `.styl` file in the `styles` directory and the `gulp` tasks will automatically detect and include it
+1) Add the new `.styl` file into the `styles` directory
+2) Add an import under the main `.styl` file: `directory.styl`
+3) Done! The gulp tasks will automatically detect and include it
 
 ### Adding JS
 Simply add a new `.js` file in the `js` directory and the `gulp` tasks will automatically detect and include it. FYI, there is currently no dependency management

@@ -4,7 +4,7 @@ var browserSync = require('browser-sync').create();
 gulp.task('compile-css', function() {
   var stylus = require('gulp-stylus');
   var concat = require('gulp-concat');
-  return gulp.src('styles/*.styl')
+  return gulp.src('styles/directory.styl')
     .pipe(stylus())
     .pipe(concat('directory.css'))
     .pipe(gulp.dest('css'))

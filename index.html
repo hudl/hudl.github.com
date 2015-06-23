@@ -9,34 +9,97 @@
   <body>
     <div class="main-wrap">
       <header class="header">
-        <img class="header__lead-image" src="images/hudl-hearts-git.png" alt="Hudl loves open source." />
-        <span class="header__title">WE {HEART} OSS.</span>
-        <span class="header__sub-title">We love open source at Hudl. Here are some cool things we're happy to share.</span>
+        <div class="header-left">
+          <img class="header__lead-image" src="images/hudl-hearts-git.png" alt="Hudl loves open source." />
+        </div>
+        <div class="header-right">
+          <span class="header__title">WE {HEART} OSS.</span>
+          <span class="header__sub-title">We love open source at Hudl. Here are some cool things we're happy to share.</span>
+        </div>
       </header>
+      <section class="cta">
+        <span class="cta__title">Do you love open source too? <a class="cta__link" href="http://get.hudl.com/join/">Join Hudl Engineering</a></span>
+      </section>
       <section class="projects">
-        <span class="list-header">Projects</span>
-        <div class="project">
-          <span class="project__name">HudlFFmpeg</span>
-          <span class="project__description">Extendable C# transcoding framework, built on top of FFmpeg.</span>
-        </div>
-        <div class="project u-constrain">
-          <span class="project__name">Mjolnir</span>
-          <span class="project__description u-subtitle-gray-color">When bad things like network partition or resource exhaustion happen, Mjolnir helps you.</span>
-        </div>
-        <div class="project u-constrain">
-          <span class="project__name">Fargo</span>
-          <span class="project__description u-subtitle-gray-color">Netflix Eureka client in golang. Named for the show Eureka.</span>
+        <header class="list-header-wrapper">
+          <span class="list-header">Projects</span>
+        </header>
+        <div class="projects-wrapper">
+          <div class="project">
+            <div class="project-meta">
+              <span class="project__name">Mjolnir</span>
+              <span class="project__language u-language-csharp">C#</span>
+            </div>
+            <span class="project__description u-subtitle-gray-color">When bad things like network partition or resource exhaustion happen, Mjolnir helps you.</span>
+          </div>
+          <div class="project project-right">
+            <div class="project-meta">
+              <span class="project__name">HudlFFmpeg</span>
+              <span class="project__language u-language-csharp">C#</span>
+            </div>
+            <span class="project__description">Extendable C# transcoding framework, built on top of FFmpeg.</span>
+          </div>
+          <div class="project">
+            <div class="project-meta">
+              <span class="project__name">Fargo</span>
+              <span class="project__language u-language-go">Go</span>
+            </div>
+            <span class="project__description u-subtitle-gray-color">Netflix Eureka client in golang. Named for the show Eureka.</span>
+          </div>
+          <div class="project project-right">
+            <div class="project-meta">
+              <span class="project__name">Nugget</span>
+              <span class="project__language u-language-js">JS</span>
+            </div>
+            <span class="project__description u-subtitle-gray-color">A simple communal dashboard (or information radiator), although perhaps not in the typical sense.</span>
+          </div>
+          <div class="project">
+            <div class="project-meta">
+              <span class="project__name">Tyr</span>
+              <span class="project__language u-language-python">Python</span>
+            </div>
+            <span class="project__description u-subtitle-gray-color">A Python library to automate the task of spinning up individual servers and different types of clusters.</span>
+          </div>
+          <div class="project project-right">
+            <div class="project-meta">
+              <span class="project__name">Convenus</span>
+              <span class="project__language u-language-js">JS</span>
+              <span class="project__language u-language-csharp">C#</span>
+            </div>
+            <span class="project__description u-subtitle-gray-color">Shows meeting room status. Runs a self-hosted Nancy server. Windows/Mono compatible.</span>
+          </div>
+          <div class="project">
+            <div class="project-meta">
+              <span class="project__name">Stackdriver.net</span>
+              <span class="project__language u-language-csharp">C#</span>
+            </div>
+            <span class="project__description u-subtitle-gray-color">A C# wrapper for sending custom metrics to StackDriver.</span>
+          </div>
         </div>
       </section>
       <section class="hudl-bits">
-        <span class="list-header">From the Hudl Bits Blog</span>
+        <header class="list-header-wrapper">
+          <span class="list-header">From the Hudl Bits Blog</span>
+        </header>
+        <div class="hudl-bits-posts"></div>
+        <footer class="list-footer">
+          <a href="http://public.hudl.com/bits/" class="hudl-bits-readmore">Read More...</a>
+        </footer>
       </section>
-      <a class="twitter-timeline" href="https://twitter.com/HudlEngineering" data-widget-id="613066514640441345">Tweets by @HudlEngineering</a>
-      <div class="join-us">
-        <h3>Join us</h3>
-        <a href="http://public.hudl.com/bits/">Product Team Blog</a>
-        <a href="http://get.hudl.com/join/">Careers</a>
-      </div>
+      <section class="twitter">
+        <header class="list-header-wrapper">
+          <span class="list-header">Tweets from @HudlEngineering</span>
+        </header>
+        <div class="twitter-timeline-wrapper">
+          <a class="twitter-timeline" href="https://twitter.com/HudlEngineering" data-widget-id="613066514640441345"
+            data-chrome="transparent nofooter noborders noscrollbar noheader">Tweets by @HudlEngineering</a>
+        </div>
+      </section>
+      <section class="join-us">
+        <header class="list-header-wrapper">
+          <span class="list-header">Want to contribute? <a class="cta__link" href="http://get.hudl.com/join/">Join Hudl Engineering</a></span>
+        </header>
+      </section>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>

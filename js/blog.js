@@ -14,7 +14,8 @@
         '<div class="blog__meta">${publishedDate} by ${author}</div>' +
         '<div class="blog__content"><%- content %></div>' +
       '</div>');
-    $('.hudl-bits').append($(template({ title: title, publishedDate: published, author: author, content: firstParagraphContent })));
+    $('.hudl-bits-posts').append($(template({ title: title, publishedDate: published, author: author, content: firstParagraphContent })));
+    $('.hudl-bits-readmore').attr('href', entry.find('link').attr('href'));
   }
 
   var url = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D%22http%3A%2F%2Fpublic.hudl.com%2Fbits%2Ffeed%22';

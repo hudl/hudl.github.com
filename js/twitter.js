@@ -16,3 +16,20 @@
     return t;
   }(document, "script", "twitter-wjs"));
 })();
+/*
+// Embed twitter
+(function(d, w) {
+
+  w.twitterLoaded = function(data) {
+    var div = document.createElement('div');
+    div.innerHTML = data.body;
+    console.log(div);
+  };
+
+  var head = document.getElementsByTagName('head')[0];
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://cdn.syndication.twimg.com/widgets/timelines/613066514640441345?&amp;lang=en&amp;callback=twitterLoaded&amp;suppress_response_codes=true&amp;rnd=0.4282359848730266';
+  head.appendChild(script);
+})(document, window);
+*/
