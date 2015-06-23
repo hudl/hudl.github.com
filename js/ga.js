@@ -7,4 +7,20 @@
 
   ga('create', 'UA-64409019-1', 'auto');
   ga('send', 'pageview');
+
+  // Outbound Link Tracking with Google Analytics
+  // http://stackoverflow.com/a/14787172
+  $("a").on('click',function(e){
+      var url = $(this).attr("href");
+      if (e.currentTarget.host != window.location.host) {
+          ga('send', 'event', 'outbound', 'click', url, 0);
+          if (e.metaKey || e.ctrlKey || this.target == "_blank") {
+              var newtab = true;
+          }
+          if (!newtab) {
+              e.preventDefault();
+              setTimeout('document.location = "' + url + '"', 100);
+          }
+      }
+  });
 })();
