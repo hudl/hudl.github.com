@@ -1,0 +1,23 @@
+{
+  "name": "HudlOSS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "directory.js",
+  "scripts": {
+    "compile-css": "mkdir css; stylus -o css styles/*.styl",
+    "watch-css": "mkdir css; stylus -o css --watch styles/*.styl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hudl/hudl.github.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hudl/hudl.github.com/issues"
+  },
+  "homepage": "https://github.com/hudl/hudl.github.com",
+  "devDependencies": {
+    "stylus": "^0.51.1"
+  }
+}
