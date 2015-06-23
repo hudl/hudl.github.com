@@ -22,6 +22,7 @@
     border-right: solid 1px dark-dark
     border-bottom: solid 1px dark-dark
     cursor: pointer
+    position: relative
 }
 
 .project:last-child {
@@ -63,4 +64,14 @@
     font-size: 1.125rem;
     line-height: 1.5rem;
     margin-top: 0.375rem;
+}
+
+.project__icon {
+    width: 2rem
+    height: auto
+    position: absolute
+}
+.project__icon + .project__meta,
+.project__icon + .project__meta + .project__description {
+    margin-left: 3rem
 }
