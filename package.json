@@ -4,8 +4,8 @@
   "description": "",
   "main": "directory.js",
   "scripts": {
-    "compile-css": "mkdir css; stylus -o css styles/*.styl",
-    "watch-css": "mkdir css; stylus -o css --watch styles/*.styl"
+    "compile-css": "gulp compile-css",
+    "watch-css": "gulp start"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/hudl/hudl.github.com",
   "devDependencies": {
+    "browser-sync": "^2.7.12",
+    "gulp": "^3.9.0",
+    "gulp-stylus": "^2.0.5",
     "stylus": "^0.51.1"
   }
 }
