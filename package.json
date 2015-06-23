@@ -7,7 +7,8 @@
     "compile-css": "gulp compile-css",
     "watch-css": "gulp start",
     "compile-js": "gulp compile-js",
-    "start-server": "gulp start"
+    "start-server": "gulp start",
+    "install": "npm run compile-css; npm run compile-js"
   },
   "repository": {
     "type": "git",
