@@ -1,9 +1,8 @@
 // Web fonts
 (function(document) {
   WebFontConfig = {
-    custom: {
-      families: ['Trade Gothic'],
-      urls: ['fonts.css']
+    google: {
+      families: ['Oswald', 'Open Sans:300,700'],
     }
   };
   var wf = document.createElement('script'), s = document.scripts[0];
