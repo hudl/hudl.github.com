@@ -46,10 +46,13 @@ gulp.task('serve', ['compile-css', 'compile-js'], function() {
     open: cmd ? false : 'local'
   });
 
+  // Listen for the `init` event to open the browser
+  browserSync.emitter.on('init', function () {
+    if (cmd) exec(cmd);
+  });
+
   gulp.watch('styles/*.styl', ['compile-css']);
   gulp.watch('js/*.js', ['compile-js']);
-
-  if (cmd) exec(cmd);
 });
 
 gulp.task('start', ['serve']);

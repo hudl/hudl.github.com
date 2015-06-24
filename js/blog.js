@@ -18,7 +18,7 @@
     $('.hudl-bits-readmore').attr('href', entry.find('link').attr('href'));
   }
 
-  var url = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D%22http%3A%2F%2Fpublic.hudl.com%2Fbits%2Ffeed%22';
+  var url = 'http://p-foundation-oss-use1c-01.external.app.hudl.com:3005/rss-feed';
   $.ajax({ url: url })
     .done(function(result) {
       var doc = $(result);
