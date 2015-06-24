@@ -4,7 +4,6 @@
 
 .projects-wrapper {
     @extend $constrain
-    margin-top: 2rem;
 
     @media (max-width: constrained-width) {
         margin-top: 1rem
@@ -13,11 +12,11 @@
 
 .project {
     box-sizing: border-box
-    padding: 1rem 1rem 1rem 0
+    padding: 2.375rem 1.75rem 2.375rem 0
     display: inline-block
     vertical-align: top
     width: constrained-width-partial
-    min-height: 10rem
+    min-height: 12rem
     border-right: solid 1px dark-dark
     border-bottom: solid 1px dark-dark
     cursor: pointer
@@ -40,7 +39,7 @@
 }
 
 .project-right {
-    padding-left: 1rem
+    padding-left: 1.75rem
     padding-right: 0
     border-right: none
     margin-left: -0.25rem // Ensure the lines meet up
