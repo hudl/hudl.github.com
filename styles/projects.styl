@@ -2,17 +2,9 @@
     background-color: medium-dark
 }
 
-.projects-wrapper {
-    @extend $constrain
-
-    @media (max-width: constrained-width) {
-        margin-top: 1rem
-    }
-}
-
 .project {
     box-sizing: border-box
-    padding: 2.375rem 1.75rem 2.375rem 0
+    padding: 2.375rem 1.75rem 2.375rem constrained-width-half-partial
     display: inline-block
     vertical-align: top
     width: constrained-width-partial
@@ -40,7 +32,7 @@
 
 .project-right {
     padding-left: 1.75rem
-    padding-right: 0
+    padding-right: constrained-width-half-partial
     border-right: none
     margin-left: -0.25rem // Ensure the lines meet up
 
