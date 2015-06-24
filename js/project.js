@@ -9,7 +9,8 @@
   $('.project').on('click', function() {
     var href = $(this).data('href');
     if (href) {
-      window.open(href);
+      ga && ga('send', 'event', 'outbound', 'click', href, 0);
+      setTimeout('document.location = "' + href + '"', 100);
     }
   })
 })($);
