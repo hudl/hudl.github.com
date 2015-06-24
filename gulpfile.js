@@ -22,9 +22,34 @@ gulp.task('compile-js', function() {
 });
 
 gulp.task('serve', ['compile-css', 'compile-js'], function() {
-  browserSync.init({ server: '.', port: 3000 });
+  var exec = require('child_process').exec;
+
+  // We're hosting the api on a different domain and to avoid
+  // CORS issues, use chrome with security disabled
+
+  // http://stackoverflow.com/questions/3102819/disable-same-origin-policy-in-chrome
+  // https://github.com/pwnall/node-open/blob/master/lib/open.js
+  var cmd;
+  switch (process.platform) {
+    case 'darwin':
+      cmd = 'open -a "Google Chrome Canary" --args --disable-web-security --url "http://localhost:3000"';
+      cmd += '|| open -a "Google Chrome Canary" --args --disable-web-security --url "http://localhost:3000"'
+      break;
+    case 'win32':
+      cmd = 'start chrome.exe "http://localhost:3000 --disable-web-security"';
+      break;
+  }
+
+  browserSync.init({
+    server: '.',
+    port: 3000,
+    open: cmd ? false : 'local'
+  });
+
   gulp.watch('styles/*.styl', ['compile-css']);
   gulp.watch('js/*.js', ['compile-js']);
+
+  if (cmd) exec(cmd);
 });
 
 gulp.task('start', ['serve']);
