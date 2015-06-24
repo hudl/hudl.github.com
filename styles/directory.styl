@@ -37,11 +37,13 @@ body {
 
 .header-right {
     display: inline-block;
-    width: 49%;
+    width: 45%;
+    padding-left: 1.75rem;
 
     @media (max-width: constrained-width) {
         width: constrained-width-mobile
         display: block
+        padding-left: 0
     }
 }
 
@@ -50,18 +52,26 @@ body {
     margin-left: auto;
     margin-right: auto;
     max-width: 325px;
+    position: relative;
+    top: -4rem;
+
+    @media (max-width: constrained-width) {
+        top: 0
+    }
 }
 
 .header__title {
     display: block;
     font-family: 'Oswald', sans-serif;
-    font-size: 2.625rem;
+    font-size: 3.9375rem;
     font-weight: normal;
     letter-spacing: 0.21875rem;
+    line-height: 4.6875rem;
     margin-top: 4.4375rem;
 
     @media (max-width: constrained-width) {
         text-align: center
+        font-size: 2.625rem;
         mobile-padding()
     }
 }
@@ -71,7 +81,7 @@ body {
     display: block;
     font-size: 1.3125rem;
     line-height: 1.75rem;
-    margin-top: 0.875rem;
+    margin-top: 2.125rem;
 
     mobile-padding-media()
 }
