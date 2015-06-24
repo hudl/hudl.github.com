@@ -13,8 +13,7 @@
 
 .project {
     box-sizing: border-box
-    padding: 1rem
-    padding-left: 0
+    padding: 1rem 1rem 1rem 0
     display: inline-block
     vertical-align: top
     width: constrained-width-partial
@@ -25,7 +24,7 @@
     position: relative
 }
 
-.project:last-child {
+.project:last-child, .project:nth-last-child(2) {
     border-bottom: none;
 }
 
@@ -74,4 +73,16 @@
 .project__icon + .project__meta,
 .project__icon + .project__meta + .project__description {
     margin-left: 3rem
+}
+
+.project__viewmore {
+    display: block
+    font-size: 1.5rem
+    margin-top: 2rem
+    margin-left: 3rem
+    color: white
+    text-decoration: none
+    &:hover {
+      text-decoration: underline
+    }
 }
