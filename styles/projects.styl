@@ -1,9 +1,13 @@
 .projects {
     background-color: medium-dark
+    display: table
+    border-collapse: collapse
+    width: 100%
 }
 
 .project-row {
     border-bottom: solid 1px dark-dark
+    display: table-row
 }
 
 .project-row:last-child {
@@ -28,7 +32,7 @@
 
 .project-left,
 .project-right {
-    display: inline-block
+    display: table-cell
     width: constrained-width-partial
     vertical-align: top
     min-height: 100%
