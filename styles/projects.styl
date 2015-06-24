@@ -9,14 +9,8 @@
 
     @media (max-width: constrained-width) {
         mobile-padding()
-        width: constrained-width-mobile
+        width: auto
     }
-}
-
-.project-left,
-.project-right {
-    width: constrained-width-partial
-    min-height: 100%
 }
 
 .project__name {
@@ -75,17 +69,5 @@
 }
 
 .project__viewmore {
-    display: block
-    font-size: 1.5rem
-    margin-top: 1rem
-    color: white
-    text-decoration: none
-    &:hover {
-        text-decoration: underline
-    }
-
-    @media (max-width: constrained-width) {
-        margin-left: 1rem
-        margin-top: 2.75rem
-    }
+    view-more()
 }

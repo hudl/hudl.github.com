@@ -1,6 +1,5 @@
 .twitter {
     background-color: medium-dark
-    padding-bottom: 2rem;
 }
 
 .tweets {
@@ -14,6 +13,10 @@
 
 .tweet:last-child {
     margin-top: 2rem
+
+    @media (max-width: constrained-width) {
+        margin-top: 0;
+    }
 }
 
 .tweet__icon {
@@ -25,4 +28,8 @@
 .tweet__icon + .tweet__meta,
 .tweet__icon + .tweet__meta + .tweet__content {
     margin-left: 4rem
+}
+
+.tweet__viewmore {
+    view-more()
 }

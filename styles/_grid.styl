@@ -7,6 +7,12 @@
 .grid-row {
     display: table-row
     border-bottom: solid 1px dark-dark
+
+    @media (max-width: constrained-width) {
+        display: block
+        width: auto
+        border-bottom: none;
+    }
 }
 
 * > .grid-row:last-child {
@@ -20,9 +26,25 @@
     display: table-cell
     padding: 2.375rem 1.75rem 2.375rem 0
     box-sizing: border-box
+    width: constrained-width-partial
+    min-height: 100%
+    vertical-align: top
 
     &:nth-child(2) {
       border-left: solid 1px dark-dark
       padding-left: 1.75rem
+
+      @media (max-width: constrained-width) {
+          border-left: none
+          padding-left: 0
+      }
+    }
+
+    @media (max-width: constrained-width) {
+        display: block
+        width: constrained-width-mobile
+        padding-left: 0
+        padding-right: 0
+        border-bottom: solid 1px dark-dark
     }
 }

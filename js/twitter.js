@@ -36,5 +36,13 @@
     .done(function(tweets) {
       $('.twitter-timeline').empty();
       _.each(_.chunk(tweets, 2), renderTweets);
+
+      // Add a view more at the end
+      $('.twitter-timeline .tweets').last().append($(
+        '<div class="tweet grid-cell">' +
+          '<a class="tweet__viewmore" href="http://github.com/hudl">' +
+            'View More Tweets &#8594;' +
+          '</a>' +
+        '</div>'));
     });
 })($, moment, _);

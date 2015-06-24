@@ -21,6 +21,7 @@ $constrain {
 }
 
 mobile-padding() {
+    box-sizing: border-box
     padding-left: 1rem
     padding-right: 1rem
 }
@@ -29,4 +30,20 @@ mobile-padding-media() {
     @media (max-width: constrained-width) {
       mobile-padding()
     }
+}
+
+view-more() {
+  display: block
+  font-size: 1.5rem
+  padding-top: 1rem
+  color: white
+  text-decoration: none
+  &:hover {
+      text-decoration: underline
+  }
+
+  @media (max-width: constrained-width) {
+      margin-left: 1rem
+      padding-top: 0
+  }
 }
