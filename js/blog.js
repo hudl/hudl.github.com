@@ -18,7 +18,7 @@
     $('.hudl-bits-readmore').attr('href', entry.find('link').attr('href'));
   }
 
-  var url = 'http://localhost:3005/rss-feed';
+  var url = 'http://p-foundation-oss-use1c-01.external.app.hudl.com:3005/rss-feed';
   $.ajax({ url: url })
     .done(function(result) {
       var doc = $(result);
