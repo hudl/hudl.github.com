@@ -3,10 +3,26 @@
     padding-bottom: 2rem;
 }
 
-
-.twitter-timeline-wrapper {
+.tweets {
     @extend $constrain
-    margin-top: 2rem
-
     mobile-padding-media()
+}
+
+.tweet {
+    position: relative;
+}
+
+.tweet:last-child {
+    margin-top: 2rem
+}
+
+.tweet__icon {
+    position: absolute;
+    width: 2rem
+    height: auto
+}
+
+.tweet__icon + .tweet__meta,
+.tweet__icon + .tweet__meta + .tweet__content {
+    margin-left: 4rem
 }

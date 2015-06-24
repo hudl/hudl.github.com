@@ -1,35 +1,40 @@
-// Embed twitter
-(function() {
-  window.twttr = (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
-    if (d.getElementById(id)) return t;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://platform.twitter.com/widgets.js";
-    fjs.parentNode.insertBefore(js, fjs);
+(function($, moment, _) {
+  function renderTweets(tweets) {
+    var rowTemplate = _.template(
+      '<div class="grid-row">' +
+        '<div class="tweets">' +
+          '<% _.forEach(cells, function(cell) { %><%= cell %><% }); %>' +
+        '</div>' +
+      '</div>');
+    var cellTemplate = _.template(
+      '<div class="tweet grid-cell">' +
+        '<div class="tweet__icon"><img src="${icon.url}" alt="${icon.text}"/></div>' +
+        '<div class="tweet__meta">${author.name} @${author.handle}</div>' +
+        '<div class="tweet__content"><%- tweet %></div>' +
+      '</div>');
 
-    t._e = [];
-    t.ready = function(f) {
-      t._e.push(f);
-    };
+    var rowData = { cells: [] };
+    _.each(tweets, function(tweet) {
+      var compiled = cellTemplate({
+          icon: {
+            url: tweet.retweeted_status ? tweet.retweeted_status.user.profile_image_url : tweet.user.profile_image_url,
+            text: (tweet.retweeted_status ? tweet.retweeted_status.user.name : tweet.user.name) + ' Icon'
+          },
+          author: {
+            name: tweet.retweeted_status ? tweet.retweeted_status.user.name : tweet.user.name,
+            handle: tweet.retweeted_status ? tweet.retweeted_status.user.screen_name : tweet.user.screen_name
+          },
+          tweet: tweet.text
+      });
+      rowData.cells.push(compiled)
+    });
 
-    return t;
-  }(document, "script", "twitter-wjs"));
-})();
-/*
-// Embed twitter
-(function(d, w) {
-
-  w.twitterLoaded = function(data) {
-    var div = document.createElement('div');
-    div.innerHTML = data.body;
-    console.log(div);
-  };
-
-  var head = document.getElementsByTagName('head')[0];
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'https://cdn.syndication.twimg.com/widgets/timelines/613066514640441345?&amp;lang=en&amp;callback=twitterLoaded&amp;suppress_response_codes=true&amp;rnd=0.4282359848730266';
-  head.appendChild(script);
-})(document, window);
-*/
+    $('.twitter-timeline').append($(rowTemplate(rowData)));
+  }
+  var url = 'http://p-foundation-oss-use1c-01.external.app.hudl.com:3005/twitter';
+  $.ajax({ url: url })
+    .done(function(tweets) {
+      $('.twitter-timeline').empty();
+      _.each(_.chunk(tweets, 2), renderTweets);
+    });
+})($, moment, _);

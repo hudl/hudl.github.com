@@ -1,0 +1,28 @@
+.grid {
+    display: table
+    border-collapse: collapse
+    width: 100%
+}
+
+.grid-row {
+    display: table-row
+    border-bottom: solid 1px dark-dark
+}
+
+* > .grid-row:last-child {
+    border-bottom: none;
+    @media (max-width: constrained-width) {
+        border-bottom: solid 1px dark-dark
+    }
+}
+
+.grid-cell {
+    display: table-cell
+    padding: 2.375rem 1.75rem 2.375rem 0
+    box-sizing: border-box
+
+    &:nth-child(2) {
+      border-left: solid 1px dark-dark
+      padding-left: 1.75rem
+    }
+}

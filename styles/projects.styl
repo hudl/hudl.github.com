@@ -1,28 +1,11 @@
 .projects {
     background-color: medium-dark
-    display: table
-    border-collapse: collapse
-    width: 100%
-}
-
-.project-row {
-    border-bottom: solid 1px dark-dark
-    display: table-row
-}
-
-.project-row:last-child {
-    border-bottom: none;
-}
-
-@media (max-width: constrained-width) {
-    .project-row:last-child {
-        border-bottom: solid 1px dark-dark
-    }
 }
 
 .project {
     @extend $constrain
     position: relative
+    cursor: pointer
 
     @media (max-width: constrained-width) {
         mobile-padding()
@@ -32,17 +15,8 @@
 
 .project-left,
 .project-right {
-    display: table-cell
     width: constrained-width-partial
-    vertical-align: top
     min-height: 100%
-    box-sizing: border-box
-    padding: 2.375rem 1.75rem 2.375rem 0
-}
-
-.project-right {
-    padding-left: 1.75rem
-    border-left: solid 1px dark-dark
 }
 
 .project__name {
