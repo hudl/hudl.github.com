@@ -1,14 +1,14 @@
 .projects {
-    // @extend $constrain
-    // margin-top: 2rem;
-    // padding-top: 2rem;
-    // padding-bottom: 2rem;
     background-color: medium-dark
 }
 
 .projects-wrapper {
     @extend $constrain
     margin-top: 2rem;
+
+    @media (max-width: constrained-width) {
+        margin-top: 1rem
+    }
 }
 
 .project {
@@ -22,10 +22,21 @@
     border-bottom: solid 1px dark-dark
     cursor: pointer
     position: relative
+
+    @media (max-width: constrained-width) {
+        mobile-padding()
+        width: constrained-width-mobile
+    }
 }
 
 .project:last-child, .project:nth-last-child(2) {
     border-bottom: none;
+}
+
+@media (max-width: constrained-width) {
+    .project:nth-last-child(2) {
+        border-bottom: solid 1px dark-dark
+    }
 }
 
 .project-right {
@@ -33,6 +44,10 @@
     padding-right: 0
     border-right: none
     margin-left: -0.25rem // Ensure the lines meet up
+
+    @media (max-width: constrained-width) {
+        mobile-padding()
+    }
 }
 
 .project__name {
@@ -83,6 +98,11 @@
     color: white
     text-decoration: none
     &:hover {
-      text-decoration: underline
+        text-decoration: underline
+    }
+
+    @media (max-width: constrained-width) {
+        margin-left: 1rem
+        margin-top: 2.75rem
     }
 }

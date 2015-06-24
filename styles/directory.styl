@@ -27,11 +27,22 @@ body {
 .header-left {
     display: inline-block;
     width: 50%;
+
+    @media (max-width: constrained-width) {
+        width: constrained-width-mobile
+        display: block
+        margin-top: 4rem
+    }
 }
 
 .header-right {
     display: inline-block;
     width: 49%;
+
+    @media (max-width: constrained-width) {
+        width: constrained-width-mobile
+        display: block
+    }
 }
 
 .header__lead-image {
@@ -48,6 +59,11 @@ body {
     font-weight: normal;
     letter-spacing: 0.21875rem;
     margin-top: 4.4375rem;
+
+    @media (max-width: constrained-width) {
+        text-align: center
+        mobile-padding()
+    }
 }
 
 .header__sub-title {
@@ -56,6 +72,8 @@ body {
     font-size: 1.3125rem;
     line-height: 1.75rem;
     margin-top: 0.875rem;
+
+    mobile-padding-media()
 }
 
 .list-header-wrapper {
@@ -69,8 +87,12 @@ body {
     padding-top: 1.5rem
     padding-bottom: 1.5rem
     color: subtitle-gray
+
+    mobile-padding-media()
 }
 
 .list-footer {
     @extend $constrain
+
+    mobile-padding-media()
 }
