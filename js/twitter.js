@@ -24,9 +24,9 @@
             name: tweet.retweeted_status ? tweet.retweeted_status.user.name : tweet.user.name,
             handle: tweet.retweeted_status ? tweet.retweeted_status.user.screen_name : tweet.user.screen_name
           },
-          tweet: tweet.text
+          tweet: tweet.retweeted_status ? tweet.retweeted_status.text : tweet.text
       });
-      rowData.cells.push(compiled)
+      rowData.cells.push(compiled);
     });
 
     $('.twitter-timeline').append($(rowTemplate(rowData)));
