@@ -18,7 +18,7 @@
     var retweetTemplate = _.template(
       '<div class="tweet__retweet">' +
         '<img class="tweet__retweet-icon" src="./images/retweet.svg" alt="Icon representing this tweet has been retweeted"/>' +
-        'Retweeted by @HudlEngineering' +
+        'Retweeted by <a class="tweet_retweet-link" href="https://twitter.com/hudlengineering">@HudlEngineering</a>' +
       '</div>'
     );
 
