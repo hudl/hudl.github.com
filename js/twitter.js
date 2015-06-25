@@ -40,7 +40,7 @@
       // Add a view more at the end
       $('.twitter-timeline .tweets').last().append($(
         '<div class="tweet grid-cell">' +
-          '<a class="tweet__viewmore" href="http://github.com/hudl">' +
+          '<a class="tweet__viewmore" href="https://twitter.com/hudlengineering">' +
             'View More Tweets &#8594;' +
           '</a>' +
         '</div>'));
