@@ -9,7 +9,7 @@
     var cellTemplate = _.template(
       '<div class="tweet grid-cell">' +
         '<div class="tweet__icon"><img src="${icon.url}" alt="${icon.text}"/></div>' +
-        '<div class="tweet__meta">${author.name} @${author.handle}</div>' +
+        '<div class="tweet__meta">${author.name} <a href="https://twitter.com/${author.handle}">@${author.handle}</a></div>' +
         '<div class="tweet__content"><%- tweet %></div>' +
       '</div>');
 
