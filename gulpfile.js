@@ -13,9 +13,14 @@ gulp.task('compile-css', function() {
 
 gulp.task('compile-js', function() {
   var concat = require('gulp-concat');
+  var order = require('gulp-order');
   // FYI, we currently have no need to dependency
   // management but that might live here at some point
   return gulp.src('js/*.js')
+    .pipe(order([
+      'util.js',
+      '*.js'
+    ]))
     .pipe(concat('directory.js'))
     .pipe(gulp.dest('scripts'))
     .pipe(browserSync.stream());

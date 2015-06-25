@@ -44,35 +44,35 @@
 
     $('.twitter-timeline').append($(rowTemplate(rowData)));
   }
-  
+
   function addLinksToTweetBody(tweetBody) {
     var tokens = tweetBody.split(' ');
     var newTokens = [];
     _.each(tokens, function(token){
-      if(token.startsWith('@')) {
+      if(_.startsWith(token, '@')) {
         //Push token without @ symbol
-        newTokens.push('<a class="tweet-body-link" href=https://twitter.com/'+
-          token.substring(1)+'>'+token+'</a>');
+        newTokens.push('<a class="tweet-body-link" href="https://twitter.com/'+
+          token.substring(1)+'">'+token+'</a>');
       }
       //Residual from retweeting
-      else if(token.startsWith('.@')) {
+      else if(_.startsWith(token, '.@')) {
         //Push token without .@ symbols
-        newTokens.push('<a class="tweet-body-link" href=https://twitter.com/'+
-          token.substring(2)+'>'+token+'</a>');
+        newTokens.push('<a class="tweet-body-link" href="https://twitter.com/'+
+          token.substring(2)+'">'+token+'</a>');
       }
-      else if(token.startsWith('#')) {
-        newTokens.push('<a class="tweet-body-link" href=https://twitter.com/hashtag/'+
-          token.substring(1)+'>'+token+'</a>');
+      else if(_.startsWith(token, '#')) {
+        newTokens.push('<a class="tweet-body-link" href="https://twitter.com/hashtag/'+
+          token.substring(1)+'">'+token+'</a>');
       }
-      else if(token.startsWith('http')) {
+      else if(_.startsWith(token, 'http')) {
         //Push entire link
-        newTokens.push('<a class="tweet-body-link" href='+token+'>'+token+'</a>');
+        newTokens.push('<a class="tweet-body-link" href="'+token+'">'+token+'</a>');
       }
       else {
         newTokens.push(token);
       }
     });
-    
+
     return newTokens.join(" ");
   }
 
@@ -91,5 +91,6 @@
         '</div>'));
 
       window.__utils.replaceSVGs($('.twitter-timeline'));
+      window.__utils.captureLinks();
     });
 })($, _, window);

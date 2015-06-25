@@ -1,4 +1,4 @@
-(function($) {
+(function($, window) {
   window.__utils = {};
   window.__utils.replaceSVGs = function($el) {
     var deferreds = [];
@@ -29,5 +29,31 @@
       deferreds.push(deferred);
     });
     $.when.apply($, deferreds).done(/*callback*/);
-  }
-})($);
+  };
+  window.__utils.showLoading = function($el) {
+    $el.empty().append($('<div class="loading">Loading...</div>'));
+  };
+  window.__utils.hideLoading = function($el) {
+    $el.find('.loading').remove();
+  };
+  // Outbound Link Tracking with Google Analytics
+  // http://stackoverflow.com/a/14787172
+  window.__utils.captureLink = function(e) {
+    var url = $(this).attr('href') || $(this).data('href');
+    if (!url) return;
+    var newtab = false;
+    if (e.currentTarget.host != window.location.host) {
+        ga('send', 'event', 'outbound', 'click', url, 0);
+        if (e.metaKey || e.ctrlKey || this.target == "_blank") {
+          newtab = true;
+        }
+        if (!newtab) {
+          e.preventDefault();
+          setTimeout('document.location = "' + url + '"', 100);
+        }
+    }
+  };
+  window.__utils.captureLinks = function() {
+    $('a').off('click', window.__utils.captureLink).on('click', window.__utils.captureLink);
+  };
+})($, window);
