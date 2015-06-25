@@ -9,6 +9,7 @@
 
 .tweet {
     position: relative;
+    font-size: 1rem
 }
 
 .tweet:last-child {
@@ -23,6 +24,10 @@
     position: absolute;
     width: 2rem
     height: auto
+
+    img {
+        border-radius: 2px;
+    }
 }
 
 .tweet__icon + .tweet__meta,
@@ -30,8 +35,18 @@
     margin-left: 4rem
 }
 
+.tweet__meta {
+    font-weight: bold
+}
+
 .tweet__viewmore {
     view-more()
+}
+
+.twitter__handle {
+    display: inline-block
+    padding-left: 0.25rem
+    font-weight 300
 }
 
 a.twitter__handle:link {
@@ -41,4 +56,9 @@ a.twitter__handle:link {
 /* visited link */
 a.twitter__handle:visited {
     color: #999999;
+}
+
+.tweet__content {
+    color: #BCC0C3
+    margin-top: 0.25rem
 }
