@@ -84,7 +84,7 @@
 
       // Add a view more at the end
       $('.twitter-timeline .tweets').last().append($(
-        '<div class="tweet grid-cell">' +
+        '<div class="tweet grid-cell grid-cell__verticallyAligned">' +
           '<a class="tweet__viewmore" href="https://twitter.com/hudlengineering">' +
             'View More Tweets &#8594;' +
           '</a>' +
