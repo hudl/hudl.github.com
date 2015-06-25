@@ -12,7 +12,7 @@
         '<div class="tweet__meta">${author.name} ' +
           '<a class="twitter__handle" href="https://twitter.com/${author.handle}">@${author.handle}</a>' +
         '</div>' +
-        '<div class="tweet__content"><%- tweet %></div>' +
+        '<div class="tweet__content"><%= tweet %></div>' +
         '<%= retweetElement %>' +
       '</div>');
     var retweetTemplate = _.template(
@@ -25,6 +25,8 @@
     var rowData = { cells: [] };
     _.each(tweets, function(tweet) {
       var isRetweet = tweet.retweeted_status;
+      var tweetBody = isRetweet ? tweet.retweeted_status.text : tweet.text;
+      var tweetBodyPlusLinks = addLinksToTweetBody(tweetBody);
       var compiled = cellTemplate({
           icon: {
             url: isRetweet ? tweet.retweeted_status.user.profile_image_url : tweet.user.profile_image_url,
@@ -34,13 +36,44 @@
             name: isRetweet ? tweet.retweeted_status.user.name : tweet.user.name,
             handle: isRetweet ? tweet.retweeted_status.user.screen_name : tweet.user.screen_name
           },
-          tweet: isRetweet ? tweet.retweeted_status.text : tweet.text,
+          tweet: tweetBodyPlusLinks,
           retweetElement: isRetweet ? retweetTemplate() : ''
       });
       rowData.cells.push(compiled);
     });
 
     $('.twitter-timeline').append($(rowTemplate(rowData)));
+  }
+  
+  function addLinksToTweetBody(tweetBody) {
+    var tokens = tweetBody.split(' ');
+    var newTokens = [];
+    _.each(tokens, function(token){
+      if(token.startsWith('@')) {
+        //Push token without @ symbol
+        newTokens.push('<a class="tweet-body-link" href=https://twitter.com/'+
+          token.substring(1)+'>'+token+'</a>');
+      }
+      //Residual from retweeting
+      else if(token.startsWith('.@')) {
+        //Push token without .@ symbols
+        newTokens.push('<a class="tweet-body-link" href=https://twitter.com/'+
+          token.substring(2)+'>'+token+'</a>');
+      }
+      else if(token.startsWith('#')) {
+        newTokens.push('<a class="tweet-body-link" href=https://twitter.com/hashtag/'+
+          token.substring(1)+'>'+token+'</a>');
+      }
+      else if(token.startsWith('http')) {
+        //Push entire link
+        newTokens.push('<a class="tweet-body-link" href='+token+'>'+token+'</a>');
+      }
+      else {
+        newTokens.push(token);
+      }
+    });
+    
+    return newTokens.join(" ");
   }
 
   var url = 'http://p-foundation-oss-use1c-01.external.app.hudl.com:3005/twitter';
