@@ -9,7 +9,8 @@
     var cellTemplate = _.template(
       '<div class="tweet grid-cell">' +
         '<div class="tweet__icon"><img src="${icon.url}" alt="${icon.text}"/></div>' +
-        '<div class="tweet__meta">${author.name} <a class="twitter__handle" href="https://twitter.com/${author.handle}">@${author.handle}</a></div>' +
+        '<div class="tweet__meta">${author.name} <a class="twitter__handle"'+
+        'href="https://twitter.com/${author.handle}">@${author.handle}</a><img src="${retweetImageUrl}"></div>' +
         '<div class="tweet__content"><%- tweet %></div>' +
       '</div>');
 
@@ -24,6 +25,7 @@
             name: tweet.retweeted_status ? tweet.retweeted_status.user.name : tweet.user.name,
             handle: tweet.retweeted_status ? tweet.retweeted_status.user.screen_name : tweet.user.screen_name
           },
+          retweetImageUrl: tweet.retweeted_status ? '/images/retweet.svg' : '',
           tweet: tweet.retweeted_status ? tweet.retweeted_status.text : tweet.text
       });
       rowData.cells.push(compiled);
