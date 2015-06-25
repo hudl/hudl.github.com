@@ -31,7 +31,8 @@
 }
 
 .tweet__icon + .tweet__meta,
-.tweet__icon + .tweet__meta + .tweet__content {
+.tweet__icon + .tweet__meta + .tweet__content,
+.tweet__icon + .tweet__meta + .tweet__content + .tweet__retweet {
     margin-left: 4rem
 }
 
@@ -39,9 +40,16 @@
     font-weight: bold
 }
 
+.tweet__retweet {
+    margin-top: 0.25rem
+    color: subtitle-gray
+    font-size: smaller
+}
+
 .tweet__retweet-icon {
     display: inline-block
-    margin-left 6px
+    margin-right 6px
+    vertical-align: middle
 
     path {
         fill: #959CA3
@@ -68,6 +76,6 @@ a.twitter__handle:visited {
 }
 
 .tweet__content {
-    color: #BCC0C3
+    color: subtitle-gray
     margin-top: 0.25rem
 }
