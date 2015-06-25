@@ -10,7 +10,7 @@
       '<div class="tweet grid-cell">' +
         '<div class="tweet__icon"><img src="${icon.url}" alt="${icon.text}"/></div>' +
         '<div class="tweet__meta">${author.name} <a class="twitter__handle"'+
-        'href="https://twitter.com/${author.handle}">@${author.handle}</a><img src="${retweetImageUrl}"></div>' +
+        'href="https://twitter.com/${author.handle}">@${author.handle}</a><img class="tweet__retweet-icon" src="${retweetImageUrl}"></div>' +
         '<div class="tweet__content"><%- tweet %></div>' +
       '</div>');
 
