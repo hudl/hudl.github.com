@@ -1,4 +1,4 @@
-(function($, moment, _) {
+(function(window, $, moment, _) {
 
   function renderBlogPost(entry) {
     var title = entry.find('title').text();
@@ -18,6 +18,8 @@
     $('.hudl-bits-readmore').attr('href', entry.find('link').attr('href'));
   }
 
+  var parent = $('.hudl-bits-posts');
+  window.__utils.showLoading(parent);
   var url = 'http://p-foundation-oss-use1c-01.external.app.hudl.com:3005/rss-feed';
   $.ajax({ url: url })
     .done(function(result) {
@@ -25,5 +27,8 @@
       // Grab the first one
       var entry = doc.find('entry').first();
       renderBlogPost(entry);
-    });
-})($, moment, _);
+    })
+    .always(function() {
+      window.__utils.hideLoading(parent);
+    })
+})(window, $, moment, _);

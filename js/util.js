@@ -31,10 +31,10 @@
     $.when.apply($, deferreds).done(/*callback*/);
   };
   window.__utils.showLoading = function($el) {
-    $el.empty().append($('<div class="loading">Loading...</div>'));
+    $el.empty().append($('<div class="loader"></div>'));
   };
   window.__utils.hideLoading = function($el) {
-    $el.find('.loading').remove();
+    $el.find('.loader').remove();
   };
   // Outbound Link Tracking with Google Analytics
   // http://stackoverflow.com/a/14787172

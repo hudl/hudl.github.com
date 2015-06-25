@@ -76,10 +76,12 @@
     return newTokens.join(" ");
   }
 
+  var parent = $('.twitter-timeline');
+  window.__utils.showLoading(parent);
   var url = 'http://p-foundation-oss-use1c-01.external.app.hudl.com:3005/twitter';
   $.ajax({ url: url })
     .done(function(tweets) {
-      $('.twitter-timeline').empty();
+      parent.empty();
       _.each(_.chunk(tweets, 2), renderTweets);
 
       // Add a view more at the end
@@ -90,7 +92,10 @@
           '</a>' +
         '</div>'));
 
-      window.__utils.replaceSVGs($('.twitter-timeline'));
+      window.__utils.replaceSVGs(parent);
       window.__utils.captureLinks();
-    });
+    })
+    .always(function() {
+      window.__utils.hideLoading(parent);
+    })
 })($, _, window);
