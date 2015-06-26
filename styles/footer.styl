@@ -1,7 +1,24 @@
+.page-footer {
+    @extend $constrain
+    text-align: center;
+    padding-bottom: 2rem;
+    margin-top: 2rem
+}
+
+.page-footer-links {
+    list-style: none
+    margin: 0
+    padding: 0
+}
+
+.page-footer-link-item {
+    display: inline-block
+    vertical-align: middle
+    text-align: center
+}
+
 .footer-link {
-    color: #999999;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    color: medium-gray;
     text-decoration: none;
 }
 a.footer-link:hover {
@@ -9,18 +26,17 @@ a.footer-link:hover {
 }
 
 a.footer-link:link {
-    color: #999999;
+    color: medium-gray;
 }
 
 /* visited link */
 a.footer-link:visited {
-    color: #999999;
+    color: medium-gray;
 }
 
-.center {
-    margin-left: auto;
-    margin-right: auto;
-    width: 45.875rem;
-    text-align: center;
-    padding-bottom: 3rem;
+a.footer-link:after {
+    content: ' -'
+}
+.page-footer-link-item:last-child > a.footer-link:after {
+    content: ''
 }
