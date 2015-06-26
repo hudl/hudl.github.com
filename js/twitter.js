@@ -1,27 +1,27 @@
 (function($, _, window) {
-  function renderTweets(tweets) {
-    var rowTemplate = _.template(
-      '<div class="grid-row">' +
-        '<div class="tweets">' +
-          '<% _.forEach(cells, function(cell) { %><%= cell %><% }); %>' +
-        '</div>' +
-      '</div>');
-    var cellTemplate = _.template(
-      '<div class="tweet grid-cell">' +
-        '<div class="tweet__icon"><img src="${icon.url}" alt="${icon.text}"/></div>' +
-        '<div class="tweet__meta">${author.name} ' +
-          '<a class="twitter__handle" href="https://twitter.com/${author.handle}">@${author.handle}</a>' +
-        '</div>' +
-        '<div class="tweet__content"><%= tweet %></div>' +
-        '<%= retweetElement %>' +
-      '</div>');
-    var retweetTemplate = _.template(
-      '<div class="tweet__retweet">' +
-        '<img class="tweet__retweet-icon" src="./images/retweet.svg" alt="Icon representing this tweet has been retweeted"/>' +
-        'Retweeted by <a class="tweet_retweet-link" href="https://twitter.com/hudlengineering">@HudlEngineering</a>' +
-      '</div>'
-    );
+  var rowTemplate = _.template(
+    '<div class="grid-row">' +
+      '<div class="tweets">' +
+        '<% _.forEach(cells, function(cell) { %><%= cell %><% }); %>' +
+      '</div>' +
+    '</div>');
+  var cellTemplate = _.template(
+    '<div class="tweet grid-cell">' +
+      '<div class="tweet__icon"><img src="${icon.url}" alt="${icon.text}"/></div>' +
+      '<div class="tweet__meta">${author.name} ' +
+        '<a class="twitter__handle" href="https://twitter.com/${author.handle}">@${author.handle}</a>' +
+      '</div>' +
+      '<div class="tweet__content"><%= tweet %></div>' +
+      '<%= retweetElement %>' +
+    '</div>');
+  var retweetTemplate = _.template(
+    '<div class="tweet__retweet">' +
+      '<img class="tweet__retweet-icon" src="./images/retweet.svg" alt="Icon representing this tweet has been retweeted"/>' +
+      'Retweeted by <a class="tweet_retweet-link" href="https://twitter.com/hudlengineering">@HudlEngineering</a>' +
+    '</div>'
+  );
 
+  function renderTweets(tweets) {
     var rowData = { cells: [] };
     _.each(tweets, function(tweet) {
       var isRetweet = tweet.retweeted_status;
