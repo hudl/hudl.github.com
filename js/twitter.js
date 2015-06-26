@@ -95,6 +95,11 @@
       window.__utils.replaceSVGs(parent);
       window.__utils.captureLinks();
     })
+    .fail(function(e){
+      var failHtml = '<h3 class="center">There was a problem while fetching tweets. Refresh the page to'+
+      ' try again.</h3>';
+      $('.twitter-timeline').append(failHtml);     
+    })
     .always(function() {
       window.__utils.hideLoading(parent);
     })
