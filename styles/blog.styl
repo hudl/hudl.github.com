@@ -1,0 +1,53 @@
+.hudl-bits {
+    background-color: medium-dark
+    padding-bottom: 2rem;
+}
+
+.hudl-bits-posts {
+    @extend $constrain
+    margin-top: 2rem
+
+    loaded-content()
+}
+
+.blog {
+    mobile-padding-media()
+}
+
+.blog__title {
+    font-weight: 700;
+    font-size: 1.75rem
+}
+
+.blog__meta {
+    color: metadata-gray
+}
+
+.blog__content {
+    color: subtitle-gray
+    font-size: 1.125rem
+    line-height: 1.75rem
+    margin-top: 1rem
+    margin-bottom: 1rem
+    max-width: 41.875rem
+}
+
+.hudl-bits-readmore {
+    color: light-gray
+    font-weight: 700
+    font-size: 1.3125rem
+    margin-top: 1.3125rem
+    text-decoration: none
+    &:hover {
+        text-decoration: underline
+    }
+}
+
+.hudl-bits-blog-link {
+    color: header-gray;
+    text-decoration: none;
+}
+
+a.hudl-bits-blog-link:hover  {
+    color: light-gray;
+}

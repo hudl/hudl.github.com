@@ -1,0 +1,31 @@
+{
+  "name": "HudlOSS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "directory.js",
+  "scripts": {
+    "compile-css": "gulp compile-css",
+    "watch-css": "gulp start",
+    "compile-js": "gulp compile-js",
+    "start-server": "gulp start",
+    "install": "npm run compile-css; npm run compile-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hudl/hudl.github.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hudl/hudl.github.com/issues"
+  },
+  "homepage": "https://github.com/hudl/hudl.github.com",
+  "devDependencies": {
+    "browser-sync": "^2.7.12",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-order": "^1.1.1",
+    "gulp-stylus": "^2.0.5",
+    "stylus": "^0.51.1"
+  }
+}

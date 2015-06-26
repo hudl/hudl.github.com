@@ -1,0 +1,53 @@
+$flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+constrained-width = 45.875rem
+constrained-width-partial = 49%
+constrained-width-mobile = 100%;
+
+$constrain {
+    width: constrained-width;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: constrained-width) {
+        width: constrained-width-mobile
+    }
+}
+
+mobile-padding() {
+    box-sizing: border-box
+    padding-left: 1rem
+    padding-right: 1rem
+}
+
+mobile-padding-media() {
+    @media (max-width: constrained-width) {
+      mobile-padding()
+    }
+}
+
+view-more() {
+  display: block
+  font-size: 1.5rem
+  color: white
+  text-align: center
+  text-decoration: none
+  &:hover {
+      text-decoration: underline
+  }
+
+  @media (max-width: constrained-width) {
+      margin-left: 1rem
+      padding-top: 0
+  }
+}
+
+loaded-content() {
+    min-height: 10rem
+}
