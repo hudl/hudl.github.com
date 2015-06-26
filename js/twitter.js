@@ -98,9 +98,9 @@
     .fail(function(e){
       var failHtml = '<h3 class="center">There was a problem while fetching tweets. Refresh the page to'+
       ' try again.</h3>';
-      $('.twitter-timeline').append(failHtml);     
+      $('.twitter-timeline').append(failHtml);
     })
     .always(function() {
       window.__utils.hideLoading(parent);
-    })
+    });
 })($, _, window);
