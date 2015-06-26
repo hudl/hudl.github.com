@@ -28,6 +28,11 @@
       var entry = doc.find('entry').first();
       renderBlogPost(entry);
     })
+    .error(function(e){
+      var failHtml = '<div class="blog__title">There was a problem while fetching the latest blog post. '+ 
+      'Refresh the page to try again.</div>';
+      $('.hudl-bits-posts').append(failHtml);
+    })
     .always(function() {
       window.__utils.hideLoading(parent);
     })
