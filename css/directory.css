@@ -375,8 +375,8 @@ th {
 .cta {
   background-color: #283038;
   text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 1.3125rem;
+  padding-bottom: 1.3125rem;
 }
 @media (max-width: 45.875rem) {
   .cta {
@@ -384,8 +384,8 @@ th {
   }
 }
 .cta__title {
-  font-size: 1rem;
-  font-weight: normal;
+  font-size: 1.3125rem;
+  font-weight: 300;
   margin: 0;
 }
 .cta__link {
@@ -740,7 +740,7 @@ body {
   font-size: 1.3125rem;
   line-height: 1.75rem;
   margin: 2.125rem 0 0 0;
-  font-weight: normal;
+  font-weight: 300;
 }
 @media (max-width: 45.875rem) {
   .header__sub-title {
@@ -755,6 +755,7 @@ body {
 .list-header {
   display: block;
   font-size: 2rem;
+  font-weight: 300;
   padding-top: 2.25rem;
   padding-bottom: 2rem;
   color: #959ca3;
