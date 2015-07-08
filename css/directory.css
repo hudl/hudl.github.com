@@ -270,13 +270,6 @@ th {
 .grid-cell__verticallyAligned {
   vertical-align: middle;
 }
-.wf-loading,
-.wf-inactive {
-  opacity: 0;
-}
-.wf-active {
-  opacity: 1;
-}
 .loader,
 .loader:before,
 .loader:after {
@@ -674,8 +667,11 @@ body {
   color: #f5f5f5;
 }
 .main-wrap {
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 300;
+}
+.wf-active .main-wrap {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 .header {
   margin-bottom: 5rem;
@@ -718,7 +714,7 @@ body {
 }
 .header__title {
   display: block;
-  font-family: 'Oswald', sans-serif;
+  font-family: sans-serif;
   font-size: 3.9375rem;
   font-weight: normal;
   letter-spacing: 0.21875rem;
@@ -733,6 +729,13 @@ body {
     padding-left: 1rem;
     padding-right: 1rem;
   }
+}
+.wf-loading .header__title,
+.wf-inactive .header__title {
+  font-size: 3rem;
+}
+.wf-active .header__title {
+  font-family: 'Oswald', sans-serif;
 }
 .header__sub-title {
   color: #bcc0c3;

@@ -2,7 +2,7 @@
 (function(document) {
   WebFontConfig = {
     google: {
-      families: ['Oswald', 'Open Sans:300,700'],
+      families: ['Oswald', 'Open Sans:300,700']
     }
   };
   var wf = document.createElement('script'), s = document.scripts[0];
