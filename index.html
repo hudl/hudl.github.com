@@ -21,131 +21,88 @@
           <h2 class="header__sub-title">We love open source at Hudl. Here are some cool things we're happy to share.</h2>
         </div>
       </header>
-      <section class="projects grid">
+      <section class="projects">
         <header class="list-header-wrapper">
           <h2 class="list-header">Projects</h2>
         </header>
-        <div class="grid-row">
-          <div class="project">
-            <div class="grid-cell">
-              <img class="project__icon" src="./images/Mjolnir.png" alt="Logo for the Mjolnir project" width="32px"/>
-              <div class="project__meta">
-                <h3 class="project__name">Mjolnir</h3>
-                <span class="project__language u-language-csharp">C#</span>
-              </div>
-              <span class="project__description u-subtitle-gray-color">When bad things like network partition or resource exhaustion happen, Mjolnir helps you.</span>
-              <a href="https://github.com/hudl/Mjolnir" class="project__link cta__link">View on Github</a>
+        <div class="grid">
+          <a href="https://github.com/hudl/Mjolnir" title="View on Github" class="project cta__link">
+            <img class="project__icon" src="./images/Mjolnir.png" alt="Logo for the Mjolnir project" width="32px"/>
+            <div class="project__meta">
+              <h3 class="project__name">Mjolnir</h3>
+              <span class="project__language u-language-csharp">C#</span>
             </div>
-            <div class="grid-cell">
-              <img class="project__icon" src="./images/ffmpeg.png" alt="Logo for the HudlFFmpeg project" width="32px"/>
-              <div class="project__meta">
-                <h3 class="project__name">HudlFFmpeg</h3>
-                <span class="project__language u-language-csharp">C#</span>
-              </div>
-              <span class="project__description">Extendable C# transcoding framework, built on top of FFmpeg.</span>
-              <a href="https://github.com/hudl/HudlFFmpeg" class="project__link cta__link">View on Github</a>
+            <span class="project__description u-subtitle-gray-color">When bad things like network partition or resource exhaustion happen, Mjolnir helps you.</span>
+          </a>
+          <a href="https://github.com/hudl/HudlFFmpeg" title="View on Github" class="project cta__link">
+            <img class="project__icon" src="./images/ffmpeg.png" alt="Logo for the HudlFFmpeg project" width="32px"/>
+            <div class="project__meta">
+              <h3 class="project__name">HudlFFmpeg</h3>
+              <span class="project__language u-language-csharp">C#</span>
             </div>
-          </div>
-        </div>
-        <div class="grid-row">
-          <div class="project">
-            <div class="grid-cell">
-              <img class="project__icon" src="./images/fargo.png" alt="Logo for the Fargo project" width="32px"/>
-              <div class="project__meta">
-                <h3 class="project__name">Fargo</h3>
-                <span class="project__language u-language-go">Go</span>
-              </div>
-              <span class="project__description u-subtitle-gray-color">Netflix Eureka client in golang. Named for the show Eureka.</span>
-              <a href="https://github.com/hudl/Fargo" class="project__link cta__link">View on Github</a>
+            <span class="project__description">Extendable C# transcoding framework, built on top of FFmpeg.</span>
+          </a>
+          <a href="https://github.com/hudl/Fargo" title="View on Github" class="project cta__link">
+            <img class="project__icon" src="./images/fargo.png" alt="Logo for the Fargo project" width="32px"/>
+            <div class="project__meta">
+              <h3 class="project__name">Fargo</h3>
+              <span class="project__language u-language-go">Go</span>
             </div>
-            <div class="grid-cell">
-              <img class="project__icon" src="./images/nugget.png" alt="Logo for the Nugget project" width="32px"/>
-              <div class="project__meta">
-                <h3 class="project__name">Nugget</h3>
-                <span class="project__language u-language-js">JS</span>
-              </div>
-              <span class="project__description u-subtitle-gray-color">A simple communal dashboard (or information radiator), although perhaps not in the typical sense.</span>
-              <a href="https://github.com/hudl/Nugget" class="project__link cta__link">View on Github</a>
+            <span class="project__description u-subtitle-gray-color">Netflix Eureka client in golang. Named for the show Eureka.</span>
+          </a>
+          <a href="https://github.com/hudl/Nugget" title="View on Github" class="project cta__link">
+            <img class="project__icon" src="./images/nugget.png" alt="Logo for the Nugget project" width="32px"/>
+            <div class="project__meta">
+              <h3 class="project__name">Nugget</h3>
+              <span class="project__language u-language-js">JS</span>
             </div>
-          </div>
-        </div>
-        <div class="grid-row">
-          <div class="project">
-            <div class="grid-cell">
-              <img class="project__icon" src="./images/tyr.png" alt="Logo for the Tyr project" width="32px"/>
-              <div class="project__meta">
-                <h3 class="project__name">Tyr</h3>
-                <span class="project__language u-language-python">Python</span>
-              </div>
-              <span class="project__description u-subtitle-gray-color">A Python library to automate the task of spinning up individual servers and different types of clusters.</span>
-              <a href="https://github.com/hudl/Tyr" class="project__link cta__link">View on Github</a>
+            <span class="project__description u-subtitle-gray-color">A simple communal dashboard (or information radiator), although perhaps not in the typical sense.</span>
+          </a>
+          <a href="https://github.com/hudl/Tyr" title="View on Github" class="project cta__link">
+            <img class="project__icon" src="./images/tyr.png" alt="Logo for the Tyr project" width="32px"/>
+            <div class="project__meta">
+              <h3 class="project__name">Tyr</h3>
+              <span class="project__language u-language-python">Python</span>
             </div>
-            <div class="grid-cell">
-              <img class="project__icon" src="./images/convenus.png" alt="Logo for the Convenus project" width="32px"/>
-              <div class="project__meta">
-                <h3 class="project__name">Convenus</h3>
-                <span class="project__language u-language-js">JS</span>
-                <span class="project__language u-language-csharp">C#</span>
-              </div>
-              <span class="project__description u-subtitle-gray-color">Shows meeting room status. Runs a self-hosted Nancy server. Windows/Mono compatible.</span>
-              <a href="https://github.com/hudl/Convenus" class="project__link cta__link">View on Github</a>
+            <span class="project__description u-subtitle-gray-color">A Python library to automate the task of spinning up individual servers and different types of clusters.</span>
+          </a>
+          <a href="https://github.com/hudl/Convenus" title="View on Github" class="project cta__link">
+            <img class="project__icon" src="./images/convenus.png" alt="Logo for the Convenus project" width="32px"/>
+            <div class="project__meta">
+              <h3 class="project__name">Convenus</h3>
+              <span class="project__language u-language-js">JS</span>
+              <span class="project__language u-language-csharp">C#</span>
             </div>
-          </div>
-        </div>
-        <div class="grid-row">
-          <div class="project">
-            <div class="grid-cell">
-              <img class="project__icon" src="./images/stackdriver.png" alt="Logo for the Stackdriver.net project" width="32px"/>
-              <div class="project__meta">
-                <h3 class="project__name">Stackdriver.net</h3>
-                <span class="project__language u-language-csharp">C#</span>
-              </div>
-              <span class="project__description u-subtitle-gray-color">A C# wrapper for sending custom metrics to StackDriver.</span>
-              <a href="https://github.com/hudl/Stackdriver.net" class="project__link cta__link">View on Github</a>
+            <span class="project__description u-subtitle-gray-color">Shows meeting room status. Runs a self-hosted Nancy server. Windows/Mono compatible.</span>
+          </a>
+          <a href="https://github.com/hudl/Stackdriver.net" title="View on Github" class="project cta__link">
+            <img class="project__icon" src="./images/stackdriver.png" alt="Logo for the Stackdriver.net project" width="32px"/>
+            <div class="project__meta">
+              <h3 class="project__name">Stackdriver.net</h3>
+              <span class="project__language u-language-csharp">C#</span>
             </div>
-            <div class="grid-cell grid-cell__verticallyAligned">
-              <a class="project__viewmore" href="http://github.com/hudl">
-                View More Projects &#8594;
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="hudl-bits">
-        <header class="list-header-wrapper">
-          <h2 class="list-header">From the <a class="hudl-bits-blog-link" href="http://public.hudl.com/bits/">Hudl Bits Blog</a></h2>
-        </header>
-        <div class="hudl-bits-posts"></div>
-        <footer class="list-footer">
-          <a href="http://public.hudl.com/bits/" class="hudl-bits-readmore">Read More...</a>
-        </footer>
-      </section>
-      <section class="twitter">
-        <header class="list-header-wrapper">
-          <h2 class="list-header">Tweets from <a href="https://twitter.com/HudlEngineering" class="tweets-from-link">@HudlEngineering</a></h2>
-        </header>
-        <div class="twitter-timeline grid">
-          <a class="twitter-timeline cta__link" href="https://twitter.com/HudlEngineering" data-widget-id="613066514640441345"
-            data-chrome="transparent nofooter noborders noscrollbar noheader" data-tweet-limit="3">Tweets by @HudlEngineering</a>
+            <span class="project__description u-subtitle-gray-color">A C# wrapper for sending custom metrics to StackDriver.</span>
+          </a>
+          <a class="project__viewmore" href="http://github.com/hudl">
+            View More Projects &#8594;
+          </a>
         </div>
       </section>
       <section class="join-us">
         <header class="list-header-wrapper">
-          <h2 class="list-header final-cta">We're hiring!&nbsp;&nbsp;<a class="cta__link" href="http://get.hudl.com/join/">Join Hudl Engineering.</a></h2>
+          <h2 class="list-header final-cta">We're hiring!&nbsp;&nbsp;<a class="cta__link" href="https://www.hudl.com/jobs">Join Hudl Engineering.</a></h2>
         </header>
       </section>
       <footer class="page-footer">
         <ul class="page-footer-links">
-          <li class="page-footer-link-item"><a class="footer-link" href="http://www.hudl.com/">Hudl.com</a></li>
-          <li class="page-footer-link-item"><a class="footer-link" href="http://public.hudl.com/bits/">Product Team Blog</a></li>
-          <li class="page-footer-link-item"><a class="footer-link" href="http://public.hudl.com/support/">Support</a></li>
+          <li class="page-footer-link-item"><a class="footer-link" href="https://www.hudl.com/">Hudl.com</a></li>
+          <li class="page-footer-link-item"><a class="footer-link" href="https://www.hudl.com/bits">Product Team Blog</a></li>
+          <li class="page-footer-link-item"><a class="footer-link" href="https://www.hudl.com/support">Support</a></li>
           <li class="page-footer-link-item"><a class="footer-link" href="https://twitter.com/HudlEngineering">Hudl Engineering Twitter</a></li>
         </ul>
       </footer>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.min.js"></script>
     <script src="scripts/directory.js"></script>
   </body>
 </html>
